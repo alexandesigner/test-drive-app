@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import { Images } from '../Themes'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
-// Components
-import RoundedButton from '../Components/RoundedButton'
-
 class LaunchScreen extends Component {
+  static navigationOptions = {
+    header: false
+  }
   render () {
     const { navigate } = this.props.navigation;
     return (
@@ -19,19 +20,36 @@ class LaunchScreen extends Component {
           <View style={styles.centered}>
             <Image source={Images.launch} style={styles.logo} />
           </View>
-          <View style={styles.section} >
-            <RoundedButton text="Ir para a Home" onPress={() => navigate('DrawerNavigation')}/>
-            <RoundedButton text="Login" onPress={() => navigate('LoginScreen')}/>
-            <RoundedButton text="Cadastro" onPress={() => navigate('RegisterScreen')}/>
+          <View style={styles.section}>
+            <Button
+              buttonStyle={styles.buttonBrand}
+              title='Home'
+              fontWeight='900'
+              onPress={() => navigate('DrawerNavigation')}
+            />
+            <Button
+              buttonStyle={styles.buttonBrand}
+              title='Login'
+              fontWeight='900'
+              onPress={() => navigate('LoginScreen')}
+            />
+            <Button
+              buttonStyle={styles.buttonBrand}
+              title='Cadastro'
+              fontWeight='900'
+              onPress={() => navigate('RegisterScreen')}
+            />
+            <Button
+              buttonStyle={styles.buttonBrand}
+              title='Nova Senha'
+              fontWeight='900'
+              onPress={() => navigate('NewPasswordScreen')}
+            />
           </View>
         </ScrollView>
       </View>
     )
   }
-}
-
-LaunchScreen.navigationOptions = {
-  header: false
 }
 
 const mapStateToProps = (state) => {

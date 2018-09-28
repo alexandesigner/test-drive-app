@@ -8,26 +8,31 @@ import { Colors } from '../Themes'
 import styles from './Styles/EmployeersScreenStyles'
 
 class EmployeersScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerMode: 'float',
+      headerStyle: { backgroundColor: '#fff' },
+      title: <Text style={ styles.textHeader }>Colaboradores</Text>,
+      headerTintColor: Colors.text,
+      headerLeft: <Icon
+                      style={styles.marginButton}
+                      type="feather"
+                      name="arrow-left"
+                      color={Colors.brand}
+                      onPress={() => navigation.navigate('DrawerNavigation')}
+                  />
+    }
+  }
   render () {
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
-            <Text>Aeeee</Text>
+            <Text>Colaboradores</Text>
           </View>
         </ScrollView>
       </View>
     )
-  }
-}
-
-EmployeersScreen.navigationOptions = ({ navigation }) => {
-  return {
-    headerMode: 'float',
-    headerStyle: { backgroundColor: '#fff' },
-    title: 'Colaboradores',
-    headerTintColor: Colors.text,
-    headerLeft: <Icon style={styles.marginButton} type="feather" name="arrow-left" color={Colors.brand} onPress={() => navigation.navigate('DrawerNavigation')} />
   }
 }
 

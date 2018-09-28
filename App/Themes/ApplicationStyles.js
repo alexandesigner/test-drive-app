@@ -23,13 +23,29 @@ const ApplicationStyles = {
       paddingTop: Metrics.baseMargin,
       backgroundColor: Colors.transparent
     },
+    textHeader: {
+      fontSize: 22
+    },
+    labelInfo: {
+      alignItems: 'center',
+      textAlign: 'center',
+      justifyContent: 'center',
+      fontSize: 16,
+      padding: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: Colors.border,
+      marginBottom: 10
+    },
+    labelForm: {
+      fontSize: 16,
+      color: Colors.text
+    },
     padding: {
       padding: 20
     },
     buttonBrand: {
-      marginTop: 20,
+      marginTop: 10,
       backgroundColor: Colors.brand,
-      color: '#fff',
       borderWidth: 1,
       borderRadius: 2,
       borderColor: '#67B2FD',
@@ -38,9 +54,13 @@ const ApplicationStyles = {
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
-      elevation: 1,
-      fontSize: 16,
-      fontWeight: '900'
+      elevation: 1
+    },
+    inputField: {
+      borderBottomWidth: 1,
+      borderBottomColor: 'gray',
+      borderWidth: 1
+      //Platform.OS === 'ios' ? 'multiline:false': null,
     },
     section: {
       margin: Metrics.section,

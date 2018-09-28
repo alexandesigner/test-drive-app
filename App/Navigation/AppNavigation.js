@@ -11,7 +11,7 @@ const AppNavigation = StackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'DrawerNavigation'
+  initialRouteName: 'MainNavigation'
 })
 
 export default AppNavigation

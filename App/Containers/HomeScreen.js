@@ -10,13 +10,16 @@ import styles from './Styles/HomeScreenStyles'
 import Toolbar from '../Components/Toolbar'
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    header: false
+  }
   render () {
     return (
       <View style={styles.mainContainer}>
         <Toolbar
           title="Test Drive App"
-          rightIcon={true}
           bgColor={Colors.transparent}
+          isIcon
           {...this.props}
         />
         <ScrollView style={styles.container}>
@@ -27,10 +30,6 @@ class HomeScreen extends Component {
       </View>
     )
   }
-}
-
-HomeScreen.navigationOptions = {
-  header: false
 }
 
 const mapStateToProps = (state) => {

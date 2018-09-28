@@ -9,12 +9,14 @@ import styles from './Styles/FAQScreenStyles'
 import Toolbar from '../Components/Toolbar'
 
 class FAQScreen extends Component {
+  static navigationOptions = {
+    header: false
+  }
   render () {
     return (
       <View style={styles.mainContainer}>
         <Toolbar
           title="Perguntas Frequentes"
-          rightIcon={false}
           bgColor="#fff"
           {...this.props}
         />
@@ -26,10 +28,6 @@ class FAQScreen extends Component {
       </View>
     )
   }
-}
-
-FAQScreen.navigationOptions = {
-  header: false
 }
 
 const mapStateToProps = (state) => {
