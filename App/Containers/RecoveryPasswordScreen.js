@@ -60,7 +60,7 @@ class RecoveryPasswordScreen extends Component {
               />
             </View>
             <View style={styles.padding}>
-              <Text style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center', color: 'red' }}>Enviaremos um e-mail com o link para alterar a sua senha</Text>
+              <Text style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center', color: Colors.error }}>Enviaremos um e-mail com o link para alterar a sua senha</Text>
             </View>
           </View>
         </ScrollView>

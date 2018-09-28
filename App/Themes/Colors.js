@@ -1,5 +1,6 @@
 const colors = {
   brand: '#0481FC',
+  brandLight: '#67B2FD',
   background: '#1F0808',
   clear: 'rgba(0,0,0,0)',
   facebook: '#3b5998',
