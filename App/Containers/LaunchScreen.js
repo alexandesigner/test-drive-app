@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Image, View } from 'react-native'
-import { Button } from 'react-native-elements'
-import { Images } from '../Themes'
+import { ScrollView, View } from 'react-native'
+import { Button, Text } from 'react-native-elements'
+import { Colors } from '../Themes'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -15,11 +15,10 @@ class LaunchScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        <View>
+          <Text style={{ fontSize: 24, color: Colors.text, alignItems: 'center', justifyContent: 'center', marginTop: 40, textAlign: 'center' }}>Test Drive App</Text>
+        </View>
         <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
-          </View>
           <View style={styles.section}>
             <Button
               buttonStyle={styles.buttonBrand}
