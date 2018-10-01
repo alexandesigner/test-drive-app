@@ -16,14 +16,14 @@ class ProfileScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: 0,
+      userId: 0,
       name: 'Airton Souza!',
       email: 'airtonsouza@gmail.com',
       image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
     }
   }
   render () {
-    const { id, name, email, image } = this.state
+    const { userId, name, email, image } = this.state
     return (
       <View style={styles.mainContainer}>
         <Toolbar
@@ -32,7 +32,7 @@ class ProfileScreen extends Component {
           {...this.props}
         />
         <FormProfile
-          id={id}
+          userId={userId}
           name={name}
           email={email}
           image={image}

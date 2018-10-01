@@ -1,15 +1,19 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, View } from 'react-native'
-import { FormLabel, FormInput, Button, Avatar } from 'react-native-elements'
+import { Modal, TouchableHighlight, View, Alert, ScrollView, Platform } from 'react-native'
+import { Text, FormLabel, FormInput, Button, Avatar, Icon } from 'react-native-elements'
 import { Colors } from '../Themes'
 
 // Styles
 import styles from './Styles/FormProfileStyles'
 
+// Components
+import FormNewPassword from './FormNewPassword'
+
 export default class FormProfile extends Component {
   static propTypes = {
+    userId: PropTypes.number,
     name: PropTypes.string,
     email: PropTypes.string,
     image: PropTypes.string,
@@ -18,6 +22,8 @@ export default class FormProfile extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      modalPassword: false,
+      userId: props.userId,
       email: props.email,
       name: props.name,
       image: props.image,
@@ -30,6 +36,9 @@ export default class FormProfile extends Component {
       }
     }
   }
+  setModalPassword = (visible) => {
+    this.setState({modalPassword: visible});
+  }
   onSubmitFields = () => {
     const fields = {
       name: this.state.name
@@ -37,7 +46,7 @@ export default class FormProfile extends Component {
     this.props.navigation.navigate('DrawerNavigation')
   }
   render() {
-    const { fieldsConfig, name, image, email } = this.state
+    const { fieldsConfig, name, image, email, userId } = this.state
     return (
       <View style={styles.container}>
         <View style={{ backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'row', borderWidth: 1, borderStyle: 'dashed', borderColor: '#d2d2d2', padding: 10, marginLeft: 10, marginRight: 10 }}>
@@ -93,6 +102,9 @@ export default class FormProfile extends Component {
             textStyle={{ color: Colors.text }}
             fontWeight='700'
             title='ALTERAR SENHA'
+            onPress={() => {
+              this.setModalPassword(true);
+            }}
           />
         </View>
         <View>
@@ -103,6 +115,29 @@ export default class FormProfile extends Component {
             onPress={this.onSubmitFields}
           />
         </View>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalPassword}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
+            <View>
+              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Alterar senha</Text>
+              <TouchableHighlight
+                style={{ position: 'absolute', right: 20, top: 0 }}
+                onPress={() => {
+                  this.setModalPassword(!this.state.modalPassword);
+                }}>
+                <Icon name="x" type="feather" color={Colors.brand} />
+              </TouchableHighlight>
+              <View style={{ marginTop: 20 }}>
+                <FormNewPassword userId={userId} />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     )
   }

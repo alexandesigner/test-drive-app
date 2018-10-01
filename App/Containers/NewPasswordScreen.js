@@ -8,7 +8,7 @@ import { Colors } from '../Themes'
 import styles from './Styles/NewPasswordScreenStyles'
 
 // Components
-import NewPasswordForm from '../Components/NewPasswordForm'
+import FormNewPassword from '../Components/FormNewPassword'
 
 class NewPasswordScreen extends Component {
   static navigationOptions = {
@@ -24,7 +24,7 @@ class NewPasswordScreen extends Component {
         <ScrollView style={styles.container}>
           <View>
             <Text style={styles.labelInfo}>Caso você tenha esquecido a senha, preencha o campo abaixo</Text>
-            <NewPasswordForm currentPassword />
+            <FormNewPassword currentPassword />
           </View>
         </ScrollView>
       </View>

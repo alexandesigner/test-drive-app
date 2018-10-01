@@ -5,18 +5,20 @@ import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-nativ
 import { Colors } from '../Themes'
 
 // Styles
-import styles from './Styles/NewPasswordFormStyles'
+import styles from './Styles/FormNewPasswordStyles'
 
-export default class NewPasswordForm extends Component {
+export default class FormNewPassword extends Component {
   static defaultProps = {
     currentPassword: false
   }
   static propTypes = {
-    currentPassword: PropTypes.bool
+    currentPassword: PropTypes.bool,
+    userId: PropTypes.number
   }
   constructor (props) {
     super(props)
     this.state = {
+      userId: props.userId,
       password: '',
       newPassword: '',
       newPasswordConfirm: '',
@@ -57,7 +59,7 @@ export default class NewPasswordForm extends Component {
   }
   render() {
     const { fieldsConfig, password, newPassword, newPasswordConfirm } = this.state
-    const { currentPassword } = this.props
+    const { currentPassword, userId } = this.props
     return (
       <View>
         {currentPassword && <View>
