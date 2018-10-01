@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
@@ -16,8 +17,19 @@ const ApplicationStyles = {
       paddingTop: Metrics.baseMargin,
       backgroundColor: Colors.transparent
     },
+    toolbarIconLeft: {
+      marginLeft: 10,
+      marginTop: Platform.OS === 'android' ? 3 : 0
+    },
+    toolbarIconRight: {
+      marginRight: 10,
+      marginTop: Platform.OS === 'android' ? 3 : 0
+    },
     textHeader: {
       fontSize: 22
+    },
+    textLight: {
+      color: '#999'
     },
     labelInfo: {
       alignItems: 'center',

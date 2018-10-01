@@ -5,8 +5,5 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     paddingBottom: Metrics.baseMargin
-  },
-  marginButton: {
-    margin: 5
   }
 })

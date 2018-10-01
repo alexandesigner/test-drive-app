@@ -6,6 +6,9 @@ import { Colors } from '../Themes'
 // Styles
 import styles from './Styles/SideMenuStyles'
 
+// Components
+import UserProfile from '../Components/UserProfile'
+
 const Brand = () => {
   return (
     <View>
@@ -26,6 +29,12 @@ class SideMenu extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      users: [{
+        id: 0,
+        name: 'Airton Souza!',
+        email: 'airtonsouza1@gmail.com',
+        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
+      }],
       listNavigation: [{
         title: 'Início',
         screen: 'HomeScreen'
@@ -37,7 +46,7 @@ class SideMenu extends Component {
   }
   render() {
     const { navigate } = this.props.navigation
-    const { listNavigation } = this.state
+    const { listNavigation, users } = this.state
     return (
       <View style={styles.container}>
         <Header
@@ -52,22 +61,16 @@ class SideMenu extends Component {
           }}
         />
         <View>
-          <View style={{ justifyContent: 'space-between', flexDirection: 'row', padding: 10, borderBottomWidth: 1, borderBottomColor: Colors.border }}>
-            <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-              <Avatar
-                medium
-                rounded
-                source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
-                onPress={() => console.log("Works!")}
-                activeOpacity={0.7}
-              />
-              <View style={{ flexDirection: 'column', marginLeft: 10 }}>
-                <Text style={{ fontSize: 16, fontWeight: '700', color: Colors.text }}>Allan Alexandre</Text>
-                <Text style={{ fontSize: 12 }}>allanalexandre@gmail.com</Text>
-              </View>
-            </View>
-            <Icon name="edit" type="feather" color={Colors.brand} />
-          </View>
+          {users.map(user => (
+            <UserProfile
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              email={user.email}
+              image={user.image}
+              {...this.props}
+            />
+          ))}
         </View>
         <ScrollView>
           <View>

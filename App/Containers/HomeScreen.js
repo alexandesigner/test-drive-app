@@ -49,6 +49,7 @@ class HomeScreen extends Component {
           title="Test Drive App"
           bgColor={Colors.transparent}
           isIcon
+          noStyled
           {...this.props}
         />
         <ScrollView style={styles.container}>

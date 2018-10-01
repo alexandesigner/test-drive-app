@@ -7,5 +7,9 @@ export default StyleSheet.create({
   },
   text: {
     color: '#fff'
+  },
+  headerStyle: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#bbb'
   }
 })

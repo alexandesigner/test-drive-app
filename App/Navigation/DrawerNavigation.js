@@ -3,6 +3,7 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation'
 // Screens
 import HomeScreen from '../Containers/HomeScreen'
 import FAQScreen from '../Containers/FAQScreen'
+import ProfileScreen from '../Containers/ProfileScreen'
 
 // Components
 import SideMenu from '../Components/SideMenu'
@@ -10,6 +11,7 @@ import SideMenu from '../Components/SideMenu'
 const DrawerStack = DrawerNavigator({
   HomeScreen: { screen: HomeScreen },
   FAQScreen: { screen: FAQScreen },
+  ProfileScreen: { screen: ProfileScreen },
 }, {
   initialRouteName: 'HomeScreen',
   drawerPosition: 'left',
