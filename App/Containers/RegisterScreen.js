@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import uuid from 'react-native-uuid'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
@@ -50,10 +49,8 @@ class RegisterScreen extends Component {
     }
   }
   registerUser = () => {
-    // Generate random id
-    const userId = uuid.v4()
-    // id, name, email, phone, password
-    this.props.register(userId, this.state.name, this.state.email, this.state.phone, this.state.password)
+    // name, email, phone, password
+    this.props.register(this.state.name, this.state.email, this.state.phone, this.state.password)
     this.props.navigation.navigate('LoginScreen')
   }
   render () {

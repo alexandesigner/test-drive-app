@@ -11,6 +11,13 @@ export default class UserProfile extends Component {
     email: PropTypes.string,
     onPress: PropTypes.func
   }
+  renderImage = (image) => {
+    if (image === null) {
+      return require('../Images/avatar.jpg')
+    } else {
+      return {uri: image}
+    }
+  }
   render() {
     const { name, email, image } = this.props
     const { navigate } = this.props.navigation
@@ -20,7 +27,7 @@ export default class UserProfile extends Component {
           <Avatar
             medium
             rounded
-            source={image}
+            source={this.renderImage(image)}
             activeOpacity={0.7}
             onPress={() => navigate('ProfileScreen')}
           />

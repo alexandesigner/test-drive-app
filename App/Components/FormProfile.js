@@ -1,9 +1,12 @@
-
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Modal, TouchableHighlight, View, Alert, ScrollView, Platform } from 'react-native'
 import { Text, FormLabel, FormInput, Button, Avatar, Icon } from 'react-native-elements'
 import { Colors } from '../Themes'
+
+// Redux
+import UserRedux from '../Redux/UserRedux'
 
 // Styles
 import styles from './Styles/FormProfileStyles'
@@ -11,7 +14,7 @@ import styles from './Styles/FormProfileStyles'
 // Components
 import FormNewPassword from './FormNewPassword'
 
-export default class FormProfile extends Component {
+class FormProfile extends Component {
   static propTypes = {
     userId: PropTypes.string,
     name: PropTypes.string,
@@ -23,7 +26,6 @@ export default class FormProfile extends Component {
     super(props)
     this.state = {
       modalPassword: false,
-      userId: props.userId,
       email: props.email,
       name: props.name,
       phone: props.phone,
@@ -40,21 +42,27 @@ export default class FormProfile extends Component {
   setModalPassword = (visible) => {
     this.setState({modalPassword: visible});
   }
-  onSubmitFields = () => {
-    const fields = {
-      name: this.state.name
+  renderImage = (image) => {
+    if (image === null) {
+      return require('../Images/avatar.jpg')
+    } else {
+      return {uri: image}
     }
+  }
+  onUpdateUser = () => {
+    this.props.updateUser(this.props.userId, this.state.name, this.state.phone, this.state.image)
     this.props.navigation.navigate('DrawerNavigation')
   }
   render() {
-    const { fieldsConfig, name, image, email, phone, userId } = this.state
+    const { fieldsConfig, name, image, email, phone, modalPassword } = this.state
+    const { userId } = this.props
     return (
       <View style={styles.container}>
-        <View style={{ backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'row', borderWidth: 1, borderStyle: 'dashed', borderColor: '#d2d2d2', padding: 10, marginLeft: 10, marginRight: 10 }}>
+        <View style={{ backgroundColor: '#fff', alignItems: 'center', flexDirection: 'row', borderWidth: 2, borderStyle: 'dashed', borderColor: '#d2d2d2', padding: 10, marginLeft: 10, marginRight: 10 }}>
           <Avatar
             large
             rounded
-            source={image}
+            source={this.renderImage(image)}
             activeOpacity={0.7}
           />
           <Button
@@ -111,13 +119,13 @@ export default class FormProfile extends Component {
             buttonStyle={styles.buttonBrand}
             fontWeight='900'
             title='SALVAR'
-            onPress={this.onSubmitFields}
+            onPress={this.onUpdateUser}
           />
         </View>
         <Modal
           animationType="slide"
           transparent={false}
-          visible={this.state.modalPassword}
+          visible={modalPassword}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
           }}>
@@ -127,7 +135,7 @@ export default class FormProfile extends Component {
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
                 onPress={() => {
-                  this.setModalPassword(!this.state.modalPassword);
+                  this.setModalPassword(!modalPassword);
                 }}>
                 <Icon name="x" type="feather" color={Colors.brand} />
               </TouchableHighlight>
@@ -141,3 +149,18 @@ export default class FormProfile extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUser: (id, name, phone, image) => dispatch(UserRedux.updateUser(id, name, phone, image)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormProfile)
+
