@@ -51,7 +51,7 @@ class RegisterScreen extends Component {
   registerUser = () => {
     // name, email, phone, password
     this.props.register(this.state.name, this.state.email, this.state.phone, this.state.password)
-    this.props.navigation.navigate('LoginScreen')
+    this.props.navigation.navigate('DrawerNavigation')
   }
   render () {
     const { fieldsConfig, name, email, password, phone } = this.state

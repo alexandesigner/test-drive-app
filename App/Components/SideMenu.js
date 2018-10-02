@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
-import { ListItem, Header, Icon, Avatar } from 'react-native-elements'
+import { ListItem, Header } from 'react-native-elements'
 import { Colors } from '../Themes'
+
+// Redux
+import UserRedux from '../Redux/UserRedux'
 
 // Styles
 import styles from './Styles/SideMenuStyles'
@@ -38,6 +41,10 @@ class SideMenu extends Component {
         screen: 'FAQScreen'
       }]
     }
+  }
+  onLogout = () => {
+    this.props.logout()
+    this.props.navigation.navigate('MainNavigation')
   }
   render() {
     const { navigate } = this.props.navigation
@@ -81,7 +88,7 @@ class SideMenu extends Component {
             containerStyle={{borderTopWidth: 1, borderTopColor: Colors.border}}
             title="Desconectar"
             leftIcon={{name: 'log-out', color: 'red', style: styles.logoutIcon, type: 'feather'}}
-            onPress={() => navigate('MainNavigation')}
+            onPress={this.onLogout}
           />
       </View>
     )
@@ -95,7 +102,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    logout: () => dispatch(UserRedux.logout()),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu)

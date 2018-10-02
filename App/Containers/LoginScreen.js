@@ -46,17 +46,11 @@ class LoginScreen extends Component {
   render () {
     const { fieldsConfig, email, password, remember } = this.state
     const { navigate } = this.props.navigation
-    const { user } = this.props
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           <View>
             <Text style={styles.labelInfo}>Caso você já tenha um cadastro, preencha os campos abaixo</Text>
-            <Text>{user.id}</Text>
-            <Text>{user.name}</Text>
-            <Text>{user.email}</Text>
-            <Text>{user.phone}</Text>
-            <Text>{user.tests}</Text>
             <View>
               <FormLabel labelStyle={styles.labelForm}>Email</FormLabel>
               <FormInput
@@ -128,8 +122,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(UserRedux.login(email, password)),
-    getUser: () => dispatch(UserRedux.getUser())
+    login: (email, password) => dispatch(UserRedux.login(email, password))
   }
 }
 

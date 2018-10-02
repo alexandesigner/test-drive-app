@@ -4,9 +4,6 @@ import { ScrollView, Text, View } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
-// Redux
-import UserRedux from '../Redux/UserRedux'
-
 // Styles
 import styles from './Styles/HomeScreenStyles'
 
@@ -18,34 +15,8 @@ class HomeScreen extends Component {
   static navigationOptions = {
     header: false
   }
-  constructor (props) {
-    super(props)
-    this.state = {
-      cars: [{
-        id: 0,
-        name: 'Up',
-        image: require('../Images/carro1.png'),
-      }, {
-        id: 1,
-        name: 'Gol',
-        image: require('../Images/carro2.png'),
-      }, {
-        id: 2,
-        name: 'Fox',
-        image: require('../Images/carro3.png'),
-      }, {
-        id: 3,
-        name: 'Novo Polo',
-        image: require('../Images/carro4.png'),
-      }, {
-        id: 4,
-        name: 'Golf',
-        image: require('../Images/carro5.png'),
-      }]
-    }
-  }
   render () {
-    const { cars } = this.state
+    const { cars } = this.props
     return (
       <View style={styles.mainContainer}>
         <Toolbar
@@ -58,7 +29,12 @@ class HomeScreen extends Component {
         <ScrollView style={styles.container}>
           <View>
             {cars.map(details => {
-              return <ListCars key={details.id} cars={details} />
+              return <ListCars
+                        key={details.id}
+                        id={details.id}
+                        name={details.name}
+                        image={details.image}
+                      />
             })}
           </View>
         </ScrollView>
@@ -77,15 +53,12 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    cars: state.cars.cars
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    login: (email, password) => dispatch(UserRedux.login(email, password)),
-    getUser: () => dispatch(UserRedux.getUser())
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

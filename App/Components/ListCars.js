@@ -9,13 +9,13 @@ import styles from './Styles/ListCarsStyles'
 
 export default class ListCars extends Component {
   static propTypes = {
-    cars: PropTypes.object,
+    id: PropTypes.string,
     name: PropTypes.string,
     image: PropTypes.string,
     onPress: PropTypes.func
   }
   render() {
-    const { name, image, onPress } = this.props.cars
+    const { id, name, image, onPress } = this.props
     return (
       <Card
         image={image}

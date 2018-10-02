@@ -50,7 +50,7 @@ class FormProfile extends Component {
     }
   }
   onUpdateUser = () => {
-    this.props.updateUser(this.props.userId, this.state.name, this.state.phone, this.state.image)
+    this.props.updateUser(this.state.name, this.state.phone, this.state.image)
     this.props.navigation.navigate('DrawerNavigation')
   }
   render() {
