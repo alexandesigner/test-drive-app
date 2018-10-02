@@ -4,6 +4,9 @@ import { ScrollView, View, Text } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage, CheckBox, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
+// Redux
+import UserRedux from '../Redux/UserRedux'
+
 // Styles
 import styles from './Styles/LoginScreenStyles'
 
@@ -35,28 +38,32 @@ class LoginScreen extends Component {
       }
     }
   }
-  onSubmitFields = () => {
-    const fields = {
-      email: this.state.email,
-      password: this.state.password,
-      remember: this.state.remember
-    }
+  loginUser = () => {
+    // email, password
+    this.props.login(this.state.email, this.state.password)
     this.props.navigation.navigate('DrawerNavigation')
   }
   render () {
     const { fieldsConfig, email, password, remember } = this.state
     const { navigate } = this.props.navigation
+    const { user } = this.props
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           <View>
             <Text style={styles.labelInfo}>Caso você já tenha um cadastro, preencha os campos abaixo</Text>
+            <Text>{user.id}</Text>
+            <Text>{user.name}</Text>
+            <Text>{user.email}</Text>
+            <Text>{user.phone}</Text>
+            <Text>{user.tests}</Text>
             <View>
               <FormLabel labelStyle={styles.labelForm}>Email</FormLabel>
               <FormInput
                 {...fieldsConfig.email}
                 style={styles.inputField}
                 value={email}
+                textContentType='emailAddress'
                 onChangeText={(email) => this.setState({ email })}
               />
             </View>
@@ -66,6 +73,8 @@ class LoginScreen extends Component {
                 {...fieldsConfig.password}
                 style={styles.inputField}
                 value={password}
+                textContentType='passowrd'
+                secureTextEntry
                 onChangeText={(password) => this.setState({ password })}
               />
             </View>
@@ -85,7 +94,7 @@ class LoginScreen extends Component {
                 buttonStyle={styles.buttonBrand}
                 fontWeight='900'
                 title='ENTRAR'
-                onPress={this.onSubmitFields}
+                onPress={this.loginUser}
               />
             </View>
             <View style={styles.padding}>
@@ -111,12 +120,17 @@ class LoginScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email, password) => dispatch(UserRedux.login(email, password)),
+    getUser: () => dispatch(UserRedux.getUser())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

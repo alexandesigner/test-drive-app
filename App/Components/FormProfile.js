@@ -13,10 +13,10 @@ import FormNewPassword from './FormNewPassword'
 
 export default class FormProfile extends Component {
   static propTypes = {
-    userId: PropTypes.number,
+    userId: PropTypes.string,
     name: PropTypes.string,
     email: PropTypes.string,
-    image: PropTypes.string,
+    phone: PropTypes.string,
     onPress: PropTypes.func
   }
   constructor (props) {
@@ -26,6 +26,7 @@ export default class FormProfile extends Component {
       userId: props.userId,
       email: props.email,
       name: props.name,
+      phone: props.phone,
       image: props.image,
       fieldsConfig: {
         name: {
@@ -46,30 +47,19 @@ export default class FormProfile extends Component {
     this.props.navigation.navigate('DrawerNavigation')
   }
   render() {
-    const { fieldsConfig, name, image, email, userId } = this.state
+    const { fieldsConfig, name, image, email, phone, userId } = this.state
     return (
       <View style={styles.container}>
         <View style={{ backgroundColor: 'transparent', alignItems: 'center', flexDirection: 'row', borderWidth: 1, borderStyle: 'dashed', borderColor: '#d2d2d2', padding: 10, marginLeft: 10, marginRight: 10 }}>
           <Avatar
             large
             rounded
-            source={{uri: image}}
+            source={image}
             activeOpacity={0.7}
           />
           <Button
             small
-            buttonStyle={{
-              backgroundColor: Colors.brand,
-              borderWidth: 1,
-              borderRadius: 3,
-              borderColor: Colors.brandLight,
-              borderBottomWidth: 0,
-              shadowColor: Colors.brandLight,
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.8,
-              shadowRadius: 3,
-              elevation: 1
-            }}
+            buttonStyle={styles.buttonBrandSmall}
             fontSize={14}
             fontWeight='900'
             title='TROCAR FOTO'
@@ -92,6 +82,15 @@ export default class FormProfile extends Component {
             style={styles.inputField}
             value={name}
             onChangeText={(name) => this.setState({ name })}
+          />
+        </View>
+        <View>
+          <FormLabel labelStyle={styles.labelForm}>Telefone (Whatsapp)</FormLabel>
+          <FormInput
+            {...fieldsConfig.phone}
+            style={styles.inputField}
+            value={phone}
+            onChangeText={(phone) => this.setState({ phone })}
           />
         </View>
         <View>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
 import { ListItem, Header, Icon, Avatar } from 'react-native-elements'
 import { Colors } from '../Themes'
@@ -29,12 +30,6 @@ class SideMenu extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      users: [{
-        id: 0,
-        name: 'Airton Souza!',
-        email: 'airtonsouza1@gmail.com',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
-      }],
       listNavigation: [{
         title: 'Início',
         screen: 'HomeScreen'
@@ -46,7 +41,8 @@ class SideMenu extends Component {
   }
   render() {
     const { navigate } = this.props.navigation
-    const { listNavigation, users } = this.state
+    const { listNavigation } = this.state
+    const { user } = this.props
     return (
       <View style={styles.container}>
         <Header
@@ -61,16 +57,14 @@ class SideMenu extends Component {
           }}
         />
         <View>
-          {users.map(user => (
-            <UserProfile
-              key={user.id}
-              id={user.id}
-              name={user.name}
-              email={user.email}
-              image={user.image}
-              {...this.props}
-            />
-          ))}
+          <UserProfile
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            email={user.email}
+            image={user.image}
+            {...this.props}
+          />
         </View>
         <ScrollView>
           <View>
@@ -94,4 +88,14 @@ class SideMenu extends Component {
   }
 }
 
-export default SideMenu
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu)

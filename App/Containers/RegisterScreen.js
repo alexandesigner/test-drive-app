@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import uuid from 'react-native-uuid'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
+
+// Redux
+import UserRedux from '../Redux/UserRedux'
 
 // Styles
 import styles from './Styles/RegisterScreenStyles'
@@ -45,14 +49,12 @@ class RegisterScreen extends Component {
       }
     }
   }
-  onSubmitFields = () => {
-    const fields = {
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      password: this.state.password,
-    }
-    alert(fields)
+  registerUser = () => {
+    // Generate random id
+    const userId = uuid.v4()
+    // id, name, email, phone, password
+    this.props.register(userId, this.state.name, this.state.email, this.state.phone, this.state.password)
+    this.props.navigation.navigate('LoginScreen')
   }
   render () {
     const { fieldsConfig, name, email, password, phone } = this.state
@@ -68,6 +70,7 @@ class RegisterScreen extends Component {
                 {...fieldsConfig.name}
                 style={styles.inputField}
                 value={name}
+                textContentType='name'
                 onChangeText={(name) => this.setState({ name })}
               />
             </View>
@@ -77,6 +80,7 @@ class RegisterScreen extends Component {
                 {...fieldsConfig.email}
                 style={styles.inputField}
                 value={email}
+                textContentType='emailAddress'
                 onChangeText={(email) => this.setState({ email })}
               />
             </View>
@@ -86,6 +90,7 @@ class RegisterScreen extends Component {
                 {...fieldsConfig.phone}
                 style={styles.inputField}
                 value={phone}
+                textContentType='telephoneNumber'
                 onChangeText={(phone) => this.setState({ phone })}
               />
             </View>
@@ -95,6 +100,8 @@ class RegisterScreen extends Component {
                 {...fieldsConfig.password}
                 style={styles.inputField}
                 value={password}
+                textContentType='passowrd'
+                secureTextEntry
                 onChangeText={(password) => this.setState({ password })}
               />
             </View>
@@ -103,7 +110,7 @@ class RegisterScreen extends Component {
                 buttonStyle={styles.buttonBrand}
                 fontWeight='900'
                 title='CADASTRAR'
-                onPress={this.onSubmitFields}
+                onPress={this.registerUser}
               />
             </View>
           </View>
@@ -126,8 +133,11 @@ const mapStateToProps = (state) => {
   return {}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    register: (name, email, phone, password) =>
+      dispatch(UserRedux.register(name, email, phone, password))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)

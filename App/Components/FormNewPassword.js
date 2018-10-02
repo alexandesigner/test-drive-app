@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
@@ -7,13 +8,13 @@ import { Colors } from '../Themes'
 // Styles
 import styles from './Styles/FormNewPasswordStyles'
 
-export default class FormNewPassword extends Component {
+class FormNewPassword extends Component {
   static defaultProps = {
     currentPassword: false
   }
   static propTypes = {
     currentPassword: PropTypes.bool,
-    userId: PropTypes.number
+    userId: PropTypes.string
   }
   constructor (props) {
     super(props)
@@ -59,7 +60,7 @@ export default class FormNewPassword extends Component {
   }
   render() {
     const { fieldsConfig, password, newPassword, newPasswordConfirm } = this.state
-    const { currentPassword, userId } = this.props
+    const { currentPassword } = this.props
     return (
       <View>
         {currentPassword && <View>
@@ -101,3 +102,15 @@ export default class FormNewPassword extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormNewPassword)

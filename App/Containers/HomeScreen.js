@@ -4,6 +4,9 @@ import { ScrollView, Text, View } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
+// Redux
+import UserRedux from '../Redux/UserRedux'
+
 // Styles
 import styles from './Styles/HomeScreenStyles'
 
@@ -72,12 +75,17 @@ class HomeScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email, password) => dispatch(UserRedux.login(email, password)),
+    getUser: () => dispatch(UserRedux.getUser())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

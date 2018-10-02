@@ -48,6 +48,18 @@ const ApplicationStyles = {
     padding: {
       padding: 20
     },
+    buttonBrandSmall: {
+      backgroundColor: Colors.brand,
+      borderWidth: 1,
+      borderRadius: 3,
+      borderColor: Colors.brandLight,
+      borderBottomWidth: 0,
+      shadowColor: Colors.brandLight,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 3,
+      elevation: 1
+    },
     buttonBrand: {
       marginTop: 10,
       backgroundColor: Colors.brand,

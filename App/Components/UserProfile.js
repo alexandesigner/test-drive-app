@@ -9,7 +9,6 @@ export default class UserProfile extends Component {
   static propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
-    image: PropTypes.string,
     onPress: PropTypes.func
   }
   render() {
@@ -21,7 +20,7 @@ export default class UserProfile extends Component {
           <Avatar
             medium
             rounded
-            source={{uri: image }}
+            source={image}
             activeOpacity={0.7}
             onPress={() => navigate('ProfileScreen')}
           />

@@ -13,17 +13,8 @@ class ProfileScreen extends Component {
   static navigationOptions = {
     header: false
   }
-  constructor (props) {
-    super(props)
-    this.state = {
-      userId: 0,
-      name: 'Airton Souza!',
-      email: 'airtonsouza@gmail.com',
-      image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
-    }
-  }
   render () {
-    const { userId, name, email, image } = this.state
+    const { user } = this.props
     return (
       <View style={styles.mainContainer}>
         <Toolbar
@@ -32,10 +23,11 @@ class ProfileScreen extends Component {
           {...this.props}
         />
         <FormProfile
-          userId={userId}
-          name={name}
-          email={email}
-          image={image}
+          userId={user.id}
+          name={user.name}
+          email={user.email}
+          phone={user.phone}
+          image={user.image}
           {...this.props}
         />
       </View>
@@ -43,11 +35,13 @@ class ProfileScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {}
 }
 
