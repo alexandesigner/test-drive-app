@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
-import { Colors } from '../Themes'
+import { FormLabel, FormInput, Button } from 'react-native-elements'
 
 // Styles
 import styles from './Styles/FormNewPasswordStyles'

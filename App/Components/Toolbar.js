@@ -5,9 +5,6 @@ import PropTypes from 'prop-types'
 import { Header, Icon } from 'react-native-elements'
 import { Colors } from '../Themes'
 
-// Styles
-import styles from './Styles/ToolbarStyles'
-
 // Button Toggle Drawer
 const ButtonToggle = ({ navigation }) => {
   return (

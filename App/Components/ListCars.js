@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Text } from 'react-native-elements'
-import { Colors } from '../Themes'
 
 // Styles
 import styles from './Styles/ListCarsStyles'

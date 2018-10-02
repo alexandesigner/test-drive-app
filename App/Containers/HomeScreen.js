@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Text, View } from 'react-native'
-import { Card, Button } from 'react-native-elements'
+import { ScrollView, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
 // Styles

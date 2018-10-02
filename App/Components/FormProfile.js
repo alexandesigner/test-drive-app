@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Modal, TouchableHighlight, View, Alert, ScrollView, Platform } from 'react-native'
+import { Modal, TouchableHighlight, View, Alert, Platform } from 'react-native'
 import { Text, FormLabel, FormInput, Button, Avatar, Icon } from 'react-native-elements'
 import { Colors } from '../Themes'
 

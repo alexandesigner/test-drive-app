@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
-import { FormLabel, FormInput, FormValidationMessage, CheckBox, Button } from 'react-native-elements'
+import { FormLabel, FormInput, CheckBox, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
 // Redux
