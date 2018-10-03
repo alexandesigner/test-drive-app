@@ -1,6 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
-import uuid from 'react-native-uuid'
 
 const CARS_DATA = [{
                     id: '123',

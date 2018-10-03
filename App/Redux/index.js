@@ -5,6 +5,7 @@ import rootSaga from '../Sagas/'
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
   cars: require('./CarsRedux').reducer,
+  carsDetails: require('./CarsDetailsRedux').reducer,
   user: require('./UserRedux').reducer,
   faq: require('./FAQRedux').reducer,
   nav: require('./NavigationRedux').reducer,

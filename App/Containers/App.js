@@ -4,9 +4,15 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
+import { YellowBox } from "react-native"
 
 // create our store
 const store = createStore()
+
+YellowBox.ignoreWarnings([
+  "Warning: isMounted(...) is deprecated",
+  "Module RCTImageLoader"
+])
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js

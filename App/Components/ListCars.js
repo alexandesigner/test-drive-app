@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { TouchableWithoutFeedback, View } from 'react-native'
 import { Card, Text } from 'react-native-elements'
 
 // Styles
@@ -16,14 +17,17 @@ export default class ListCars extends Component {
   render() {
     const { id, name, image, onPress } = this.props
     return (
-      <Card
-        image={image}
-        style={styles.card}
-        onPress={onPress}>
-        <Text style={styles.cardTitle}>
-          {name}
-        </Text>
-      </Card>
+      <TouchableWithoutFeedback onPress={onPress}>
+        <View>
+          <Card
+            image={image}
+            containerStyle={styles.card}>
+            <Text style={styles.cardTitle}>
+              {name}
+            </Text>
+          </Card>
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }

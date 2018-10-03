@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation'
 // Containers
 import LaunchScreen from '../Containers/LaunchScreen'
 import EmployeersScreen from '../Containers/EmployeersScreen'
+import CarDetailsScreen from '../Containers/CarDetailsScreen'
 
 // Authentication
 import LoginScreen from '../Containers/LoginScreen'
@@ -16,7 +17,8 @@ const MainNavigation = StackNavigator({
   RegisterScreen: { screen: RegisterScreen },
   RecoveryPasswordScreen: { screen: RecoveryPasswordScreen },
   NewPasswordScreen: { screen: NewPasswordScreen },
-  EmployeersScreen: { screen: EmployeersScreen }
+  EmployeersScreen: { screen: EmployeersScreen },
+  CarDetailsScreen: { screen: CarDetailsScreen }
 }, {
   headerMode: 'float',
   navigationOptions: {

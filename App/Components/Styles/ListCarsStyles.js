@@ -3,11 +3,6 @@ import { ApplicationStyles, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  card: {
-    borderRadius: 4,
-    shadowRadius: 4,
-    elevation: 1
-  },
   cardTitle: {
     fontSize: 20,
     color: Colors.text,

@@ -77,6 +77,21 @@ const ApplicationStyles = {
       borderBottomWidth: 1,
       borderBottomColor: 'gray',
       borderWidth: 1
+    },
+    titleBox: {
+      fontSize: 16,
+      color: Colors.brand,
+      fontWeight: '600'
+    },
+    card: {
+      borderRadius: 3,
+      shadowRadius: 3,
+      shadowOpacity: 0.6,
+      shadowRadius: 3,
+      elevation: 1,
+      padding: 10,
+      marginLeft: 0,
+      marginRight: 0
     }
   }
 }

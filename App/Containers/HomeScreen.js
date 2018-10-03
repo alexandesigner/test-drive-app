@@ -17,6 +17,7 @@ class HomeScreen extends Component {
   }
   render () {
     const { cars } = this.props
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.mainContainer}>
         <Toolbar
@@ -27,13 +28,22 @@ class HomeScreen extends Component {
           {...this.props}
         />
         <ScrollView style={styles.container}>
-          <View>
+          <View style={{ padding: 15 }}>
             {cars.map(details => {
+              const { id, name, image } = details
               return <ListCars
-                        key={details.id}
-                        id={details.id}
-                        name={details.name}
-                        image={details.image}
+                        key={id}
+                        id={id}
+                        name={name}
+                        image={image}
+                        onPress={() => {
+                          navigate('CarDetailsScreen', {
+                            carId: id,
+                            carName: name,
+                            carImage: image
+                          })
+                        }}
+                        {...this.props}
                       />
             })}
           </View>
