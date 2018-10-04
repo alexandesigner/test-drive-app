@@ -24,7 +24,7 @@ class FAQScreen extends Component {
           {...this.props}
         />
         <ScrollView style={styles.container}>
-          <View style={styles.centered}>
+          <View style={{ alignItems: 'center', marginBottom: 80 }}>
             {faq.map(item => {
               return (
                 <View key={item.id} style={{ flex: 1, padding: 20 }}>

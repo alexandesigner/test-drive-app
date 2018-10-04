@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, Modal, TouchableHighlight, Platform } from 'react-native'
 import { Icon, List, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
+
+// Redux
+import EmployeersRedux from '../Redux/EmployeersRedux'
 
 // Styles
 import styles from './Styles/EmployeersScreenStyles'
 
 // Components
 import ListEmployeers from '../Components/ListEmployeers'
+import FormAddEmployeers from '../Components/FormAddEmployeers'
 
 class EmployeersScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -26,62 +30,8 @@ class EmployeersScreen extends Component {
                   />
     }
   }
-  constructor (props) {
-    super(props)
-    this.state = {
-      employeers: [{
-        id: 0,
-        name: 'Amy Farha',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        email: 'amyfahra@gmail.com',
-        tests: 6
-      }, {
-        id: 1,
-        name: 'Chris Jackson',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        email: 'chrisjack@gmail.com',
-        tests: 3
-      }, {
-        id: 2,
-        name: 'Amy Whinehouse',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        email: 'amyfahra@gmail.com',
-        tests: 0
-      }, {
-        id: 3,
-        name: 'Johny B Good',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        email: 'chrisjack@gmail.com',
-        tests: 25
-      }, {
-        id: 4,
-        name: 'Amy Farha',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        email: 'amyfahra@gmail.com',
-        tests: 2
-      }, {
-        id: 5,
-        name: 'Chris Jackson',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        email: 'chrisjack@gmail.com',
-        tests: 1
-      }, {
-        id: 6,
-        name: 'Amy Whinehouse',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        email: 'amyfahra@gmail.com',
-        tests: 0
-      }, {
-        id: 7,
-        name: 'Johny B Good',
-        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        email: 'chrisjack@gmail.com',
-        tests: 12
-      }]
-    }
-  }
   render () {
-    const { employeers } = this.state
+    const { employeers, modal, changeModal } = this.props
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
@@ -99,19 +49,45 @@ class EmployeersScreen extends Component {
             fontWeight='900'
             icon={{name: 'plus', type: 'feather'}}
             title='CADASTRAR COLABORADOR'
+            onPress={() => changeModal(true)}
           />
         </View>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={modal}
+          onRequestClose={() => Alert.alert('Modal has been closed.')}>
+          <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
+            <View>
+              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Cadastrar colaborador</Text>
+              <TouchableHighlight
+                style={{ position: 'absolute', right: 20, top: 0 }}
+                onPress={() => changeModal(false)}>
+                <Icon name="x" type="feather" color={Colors.brand} />
+              </TouchableHighlight>
+              <View style={{ marginTop: 20 }}>
+                <FormAddEmployeers />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    employeers: state.employeers.employeers,
+    modal: state.employeers.modal
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    changeModal: (visible) =>
+      dispatch(EmployeersRedux.changeModal(visible))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeersScreen)

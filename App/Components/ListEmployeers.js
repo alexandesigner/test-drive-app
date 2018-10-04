@@ -24,7 +24,8 @@ export default class ListEmployeers extends Component {
         subtitle={email}
         onPress={onPress}
         containerStyle={{ backgroundColor: Colors.transparent }}
-        subtitleStyle={{ fontWeight: '400', color: Colors.textLight }}
+        titleStyle={{ fontWeight: '700', fontSize: 16 }}
+        subtitleStyle={{ fontSize: 12, fontWeight: '400', color: Colors.textLight }}
         rightIcon={
           <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
             <Text style={{ color: Colors.brand, fontSize: 16 }}>{tests}</Text>

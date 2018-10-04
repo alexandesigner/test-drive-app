@@ -1,7 +1,7 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
-const CARS_DETAILS_DATA = [{
+const CARS_DETAILS_DATA = {
                     id: '123',
                     name: 'Up',
                     image: require('../Images/carro1.png'),
@@ -45,7 +45,7 @@ const CARS_DETAILS_DATA = [{
                         description: '100 - 95'
                       }]
                     }]
-                  }]
+                  }
 
 /* ------------- Types and Action Creators ------------- */
 

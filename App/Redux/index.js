@@ -8,6 +8,7 @@ export const reducers = combineReducers({
   carsDetails: require('./CarsDetailsRedux').reducer,
   user: require('./UserRedux').reducer,
   faq: require('./FAQRedux').reducer,
+  employeers: require('./EmployeersRedux').reducer,
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
   search: require('./SearchRedux').reducer

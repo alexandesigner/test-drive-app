@@ -12,7 +12,7 @@ class LaunchScreen extends Component {
     header: false
   }
   render () {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.mainContainer}>
         <View>

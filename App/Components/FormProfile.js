@@ -80,6 +80,7 @@ class FormProfile extends Component {
             style={styles.inputField}
             value={email}
             editable={false}
+            textContentType='emailAddress'
             selectTextOnFocus={false}
           />
         </View>
@@ -89,6 +90,7 @@ class FormProfile extends Component {
             {...fieldsConfig.name}
             style={styles.inputField}
             value={name}
+            textContentType='name'
             onChangeText={(name) => this.setState({ name })}
           />
         </View>
@@ -98,6 +100,7 @@ class FormProfile extends Component {
             {...fieldsConfig.phone}
             style={styles.inputField}
             value={phone}
+            textContentType='telephoneNumber'
             onChangeText={(phone) => this.setState({ phone })}
           />
         </View>
@@ -109,9 +112,7 @@ class FormProfile extends Component {
             textStyle={{ color: Colors.text }}
             fontWeight='700'
             title='ALTERAR SENHA'
-            onPress={() => {
-              this.setModalPassword(true);
-            }}
+            onPress={() => this.setModalPassword(true)}
           />
         </View>
         <View>
@@ -126,17 +127,13 @@ class FormProfile extends Component {
           animationType="slide"
           transparent={false}
           visible={modalPassword}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
+          onRequestClose={() => Alert.alert('Modal has been closed.')}>
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
               <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Alterar senha</Text>
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
-                onPress={() => {
-                  this.setModalPassword(!modalPassword);
-                }}>
+                onPress={() => this.setModalPassword(!modalPassword)}>
                 <Icon name="x" type="feather" color={Colors.brand} />
               </TouchableHighlight>
               <View style={{ marginTop: 20 }}>

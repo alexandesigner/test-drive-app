@@ -68,6 +68,8 @@ class FormNewPassword extends Component {
             {...fieldsConfig.password}
             style={styles.inputField}
             value={password}
+            textContentType='password'
+            secureTextEntry
             onChangeText={(password) => this.setState({ password })}
           />
         </View>}
@@ -77,6 +79,8 @@ class FormNewPassword extends Component {
             {...fieldsConfig.newPassword}
             style={styles.inputField}
             value={newPassword}
+            textContentType='password'
+            secureTextEntry
             onChangeText={(newPassword) => this.setState({ newPassword })}
           />
         </View>
@@ -86,6 +90,8 @@ class FormNewPassword extends Component {
             {...fieldsConfig.newPasswordConfirm}
             style={styles.inputField}
             value={newPasswordConfirm}
+            textContentType='password'
+            secureTextEntry
             onChangeText={(newPasswordConfirm) => this.setState({ newPasswordConfirm })}
           />
         </View>

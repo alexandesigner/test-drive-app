@@ -1,0 +1,121 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { View, Text } from 'react-native'
+import { FormLabel, FormInput, Button } from 'react-native-elements'
+
+// Redux
+import EmployeersRedux from '../Redux/EmployeersRedux'
+
+// Styles
+import styles from './Styles/FormAddEmployersStyles'
+
+class FormAddEmployers extends Component {
+  static propTypes = {
+    modal: PropTypes.bool,
+    setModalAddEmployeers: PropTypes.func
+  }
+  constructor (props) {
+    super(props)
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      fieldsConfig: {
+        name: {
+          autoCorrect: false,
+          placeholder: 'Informe o nome'
+        },
+        email: {
+          autoCorrect: false,
+          autoCapitalize: 'none',
+          placeholder: 'Informe o email'
+        },
+        phone: {
+          autoCorrect: false,
+          autoCapitalize: 'none',
+          placeholder: '(xx) x xxxx-xxxx'
+        },
+        password: {
+          autoCorrect: false,
+          autoCapitalize: 'none',
+          placeholder: 'Informe a senha'
+        }
+      }
+    }
+  }
+  onSubmitFields = () => {
+    this.props.changeModal(false)
+  }
+  render() {
+    const { fieldsConfig, name, email, phone, password } = this.state
+    return (
+      <View>
+        <Text style={styles.labelInfo}>Preencha os campos abaixo para fazer o pré-cadastro de um colaborador</Text>
+        <View>
+          <FormLabel labelStyle={styles.labelForm}>Nome</FormLabel>
+          <FormInput
+            {...fieldsConfig.name}
+            style={styles.inputField}
+            value={name}
+            textContentType='name'
+            onChangeText={(name) => this.setState({ name })}
+          />
+        </View>
+        <View>
+          <FormLabel labelStyle={styles.labelForm}>Email</FormLabel>
+          <FormInput
+            {...fieldsConfig.email}
+            style={styles.inputField}
+            value={email}
+            textContentType='emailAddress'
+            onChangeText={(email) => this.setState({ email })}
+          />
+        </View>
+        <View>
+          <FormLabel labelStyle={styles.labelForm}>Telefone (whatsapp)</FormLabel>
+          <FormInput
+            {...fieldsConfig.phone}
+            style={styles.inputField}
+            value={phone}
+            textContentType='telephoneNumber'
+            onChangeText={(phone) => this.setState({ phone })}
+          />
+        </View>
+        <View>
+          <FormLabel labelStyle={styles.labelForm}>Senha</FormLabel>
+          <FormInput
+            {...fieldsConfig.password}
+            style={styles.inputField}
+            value={password}
+            textContentType='password'
+            secureTextEntry
+            onChangeText={(password) => this.setState({ password })}
+          />
+        </View>
+        <View style={{ marginTop: 10 }}>
+          <Button
+            buttonStyle={styles.buttonBrand}
+            fontWeight='900'
+            title='CONFIRMAR'
+            onPress={this.onSubmitFields}
+          />
+        </View>
+      </View>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeModal: (visible) =>
+      dispatch(EmployeersRedux.changeModal(visible))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddEmployers)

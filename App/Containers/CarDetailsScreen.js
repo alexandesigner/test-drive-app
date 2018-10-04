@@ -39,27 +39,26 @@ class CarDetailsScreen extends Component {
   }
   constructor (props) {
     super(props)
-    const carModelFirst = props.carsDetails.map((item, index) => item.models[index])
-    const allModels = props.carsDetails.map(item => item.models)
     this.state = {
-      carModel: carModelFirst,
-      allModels: allModels
+      carModel: props.carsDetails.models[0],
+      allModels: props.carsDetails.models
     }
   }
   showActionSheet = () => {
     this.ActionSheet.show()
   }
-  toggleModel = () => {
-    alert(JSON.stringify(this.props.carsDetails[0].models.map(item => item.name)))
+  toggleModel = (index) => {
+    this.setState({
+      carModel: this.state.allModels[index]
+    })
   }
   render () {
-    const { carModel, allModels } = this.state
+    const { carModel } = this.state
     const { carsDetails } = this.props
-    const renderCarName = carsDetails.map(item => item.name)
-    const renderModelName = carModel.map(item => item.name)
+    const renderCarName = carsDetails.name
+    const renderModelName = carModel.name
     // Destaques do modelo
-    const modelFeatured = carModel.map(item => item.featured)
-    const renderFeaturedList = modelFeatured[0].map(item =>
+    const renderFeaturedList = carModel.featured.map(item =>
       <ListItem
         key={item.label}
         title={item.label}
@@ -72,8 +71,7 @@ class CarDetailsScreen extends Component {
       />
     )
     // Ficha técnica
-    const modelDatasheet = carModel.map(item => item.datasheet)
-    const renderDatasheetList = modelDatasheet[0].map(item =>
+    const renderDatasheetList = carModel.datasheet.map(item =>
       <ListItem
         key={item.label}
         title={item.label}
@@ -85,15 +83,17 @@ class CarDetailsScreen extends Component {
         hideChevron
       />
     )
-    const renderFeaturedImage = carsDetails.map(item => (
-      <View key={item.id}>
+    const renderFeaturedImage = (
+      <View key={carsDetails.id}>
         <Image
           style={styles.featuredImage}
           resizeMode="cover"
-          source={item.image}
+          source={carsDetails.image}
         />
       </View>
-    ))
+    )
+    const modelsNames = carsDetails.models.map(item => item.name)
+    const actionSheetOptions = modelsNames.concat(['Cancelar'])
     return (
       <View style={styles.mainContainer}>
         <TouchableOpacity onPress={this.showActionSheet}>
@@ -106,10 +106,6 @@ class CarDetailsScreen extends Component {
         </TouchableOpacity>
         <ScrollView style={styles.container}>
             {renderFeaturedImage}
-            <TouchableOpacity onPress={this.toggleModel}>
-              <Text>Trocar de modelo</Text>
-              <Text>{allModels.map(item => item.name)}</Text>
-            </TouchableOpacity>
             <View style={{ padding: 10 }}>
               <Text style={styles.titleBox}>Destaque do {renderModelName}</Text>
               <Card containerStyle={styles.card}>
@@ -128,10 +124,9 @@ class CarDetailsScreen extends Component {
         <ActionSheet
           ref={o => this.ActionSheet = o}
           title={'Escolha o modelo'}
-          options={['Up1', 'Up2', 'Cancelar']}
-          cancelButtonIndex={2}
-          destructiveButtonIndex={0}
-          onPress={(index) => { alert(index) }}
+          options={actionSheetOptions}
+          cancelButtonIndex={actionSheetOptions.lastIndexOf()}
+          onPress={(index) => this.toggleModel(index)}
         />
       </View>
     )

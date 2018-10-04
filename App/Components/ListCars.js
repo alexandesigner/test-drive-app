@@ -15,7 +15,7 @@ export default class ListCars extends Component {
     onPress: PropTypes.func
   }
   render() {
-    const { id, name, image, onPress } = this.props
+    const { name, image, onPress } = this.props
     return (
       <TouchableWithoutFeedback onPress={onPress}>
         <View>

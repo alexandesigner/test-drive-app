@@ -97,7 +97,7 @@ class RegisterScreen extends Component {
                 {...fieldsConfig.password}
                 style={styles.inputField}
                 value={password}
-                textContentType='passowrd'
+                textContentType='password'
                 secureTextEntry
                 onChangeText={(password) => this.setState({ password })}
               />
