@@ -46,7 +46,7 @@ class FormAddEmployers extends Component {
     }
   }
   onSubmitFields = () => {
-    this.props.changeModal(false)
+    this.props.changeModalAddEmployeers(false)
   }
   render() {
     const { fieldsConfig, name, email, phone, password } = this.state
@@ -113,8 +113,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeModal: (visible) =>
-      dispatch(EmployeersRedux.changeModal(visible))
+    changeModalAddEmployeers: (visible) => dispatch(EmployeersRedux.changeModalAddEmployeers(visible))
   }
 }
 

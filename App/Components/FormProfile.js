@@ -39,8 +39,8 @@ class FormProfile extends Component {
       }
     }
   }
-  setModalPassword = (visible) => {
-    this.setState({modalPassword: visible});
+  onChangeModalNewPassword = (visible) => {
+    this.props.changeModalNewPassword(visible)
   }
   renderImage = (image) => {
     if (image === null) {
@@ -50,12 +50,13 @@ class FormProfile extends Component {
     }
   }
   onUpdateUser = () => {
+    // name, phone, image
     this.props.updateUser(this.state.name, this.state.phone, this.state.image)
     this.props.navigation.navigate('DrawerNavigation')
   }
   render() {
-    const { fieldsConfig, name, image, email, phone, modalPassword } = this.state
-    const { userId } = this.props
+    const { fieldsConfig, name, image, email, phone } = this.state
+    const { userId, modalNewPassword } = this.props
     return (
       <View style={styles.container}>
         <View style={{ backgroundColor: '#fff', alignItems: 'center', flexDirection: 'row', borderWidth: 2, borderStyle: 'dashed', borderColor: '#d2d2d2', padding: 10, marginLeft: 10, marginRight: 10 }}>
@@ -112,7 +113,7 @@ class FormProfile extends Component {
             textStyle={{ color: Colors.text }}
             fontWeight='700'
             title='ALTERAR SENHA'
-            onPress={() => this.setModalPassword(true)}
+            onPress={() => this.onChangeModalNewPassword(true)}
           />
         </View>
         <View>
@@ -126,14 +127,14 @@ class FormProfile extends Component {
         <Modal
           animationType="slide"
           transparent={false}
-          visible={modalPassword}
+          visible={modalNewPassword}
           onRequestClose={() => Alert.alert('Modal has been closed.')}>
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
               <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Alterar senha</Text>
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
-                onPress={() => this.setModalPassword(!modalPassword)}>
+                onPress={() => this.onChangeModalNewPassword(false)}>
                 <Icon name="x" type="feather" color={Colors.brand} />
               </TouchableHighlight>
               <View style={{ marginTop: 20 }}>
@@ -149,13 +150,15 @@ class FormProfile extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    modalNewPassword: state.user.modalNewPassword
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     updateUser: (id, name, phone, image) => dispatch(UserRedux.updateUser(id, name, phone, image)),
+    changeModalNewPassword: (visible) => dispatch(UserRedux.changeModalNewPassword(visible))
   }
 }
 

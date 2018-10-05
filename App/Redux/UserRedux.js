@@ -15,7 +15,8 @@ const { Types, Creators } = createActions({
   logout: null,
   updateUser: ['name', 'phone', 'image'],
   recoveryPassword: ['email'],
-  changePassword: ['userId']
+  changePassword: ['userId'],
+  changeModalNewPassword: ['visible']
 })
 
 export const UserTypes = Types
@@ -30,7 +31,8 @@ export const INITIAL_STATE = Immutable({
   phone: null,
   image: null,
   tests: null,
-  token: null
+  token: null,
+  modalNewPassword: false
 })
 
 /* ------------- Reducers ------------- */
@@ -59,6 +61,9 @@ export const recoveryPassword = (state, { email }) =>
 export const changePassword = (state, { userId }) =>
   state.merge({ id: userId })
 
+export const changeModalNewPassword = (state, { visible }) =>
+  state.merge({ modalNewPassword: visible })
+
 /* ------------- Selectors ------------- */
 
 export const UserSelectors = {
@@ -77,5 +82,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_USER]: getUser,
   [Types.UPDATE_USER]: updateUser,
   [Types.RECOVERY_PASSWORD]: recoveryPassword,
-  [Types.CHANGE_PASSWORD]: changePassword
+  [Types.CHANGE_PASSWORD]: changePassword,
+  [Types.CHANGE_MODAL_NEW_PASSWORD]: changeModalNewPassword
 })

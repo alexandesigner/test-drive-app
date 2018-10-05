@@ -57,7 +57,7 @@ class CarDetailsScreen extends Component {
     const { carsDetails } = this.props
     const renderCarName = carsDetails.name
     const renderModelName = carModel.name
-    // Destaques do modelo
+    // Destaques do modelo (FeaturedList)
     const renderFeaturedList = carModel.featured.map(item =>
       <ListItem
         key={item.label}
@@ -70,7 +70,7 @@ class CarDetailsScreen extends Component {
         hideChevron
       />
     )
-    // Ficha técnica
+    // Ficha técnica (DatasheetList)
     const renderDatasheetList = carModel.datasheet.map(item =>
       <ListItem
         key={item.label}
@@ -83,6 +83,7 @@ class CarDetailsScreen extends Component {
         hideChevron
       />
     )
+    // Render image featured
     const renderFeaturedImage = (
       <View key={carsDetails.id}>
         <Image
@@ -92,7 +93,9 @@ class CarDetailsScreen extends Component {
         />
       </View>
     )
+    // Get all model names
     const modelsNames = carsDetails.models.map(item => item.name)
+    // Set the end arr 'cancel' option
     const actionSheetOptions = modelsNames.concat(['Cancelar'])
     return (
       <View style={styles.mainContainer}>

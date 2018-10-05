@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 
+// Redux
+import UserRedux from '../Redux/UserRedux'
+
 // Styles
 import styles from './Styles/FormNewPasswordStyles'
 
@@ -48,13 +51,13 @@ class FormNewPassword extends Component {
         newPassword: this.state.newPassword,
         newPasswordConfirm: this.state.newPasswordConfirm
       }
-      alert(fields)
+      this.props.changeModalNewPassword(false)
     } else {
       const fields = {
         newPassword: this.state.newPassword,
         newPasswordConfirm: this.state.newPasswordConfirm
       }
-      alert(fields)
+      this.props.changeModalNewPassword(false)
     }
   }
   render() {
@@ -115,7 +118,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    changeModalNewPassword: (visible) => dispatch(UserRedux.changeModalNewPassword(visible))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormNewPassword)

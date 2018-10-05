@@ -30,8 +30,14 @@ class EmployeersScreen extends Component {
                   />
     }
   }
+  constructor(props) {
+    super(props)
+  }
+  onChangeModalAddEmployeers = (visible) => {
+    this.props.changeModalAddEmployeers(visible)
+  }
   render () {
-    const { employeers, modal, changeModal } = this.props
+    const { employeers, modalAddEmployeers } = this.props
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
@@ -49,20 +55,20 @@ class EmployeersScreen extends Component {
             fontWeight='900'
             icon={{name: 'plus', type: 'feather'}}
             title='CADASTRAR COLABORADOR'
-            onPress={() => changeModal(true)}
+            onPress={() => this.onChangeModalAddEmployeers(true)}
           />
         </View>
         <Modal
           animationType="slide"
           transparent={false}
-          visible={modal}
+          visible={modalAddEmployeers}
           onRequestClose={() => Alert.alert('Modal has been closed.')}>
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
               <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Cadastrar colaborador</Text>
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
-                onPress={() => changeModal(false)}>
+                onPress={() => this.onChangeModalAddEmployeers(false)}>
                 <Icon name="x" type="feather" color={Colors.brand} />
               </TouchableHighlight>
               <View style={{ marginTop: 20 }}>
@@ -79,14 +85,13 @@ class EmployeersScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     employeers: state.employeers.employeers,
-    modal: state.employeers.modal
+    modalAddEmployeers: state.employeers.modalAddEmployeers
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    changeModal: (visible) =>
-      dispatch(EmployeersRedux.changeModal(visible))
+    changeModalAddEmployeers: (visible) => dispatch(EmployeersRedux.changeModalAddEmployeers(visible))
   }
 }
 

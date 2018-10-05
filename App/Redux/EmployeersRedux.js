@@ -56,7 +56,7 @@ const EMPLOYEER_DATA = [{
 const { Types, Creators } = createActions({
   setEmployeers: ['employeers'],
   getEmployeers: ['employeers'],
-  changeModal: ['visible']
+  changeModalAddEmployeers: ['visible']
 })
 
 export const EmployeersType = Types
@@ -66,13 +66,13 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   employeers: EMPLOYEER_DATA,
-  modal: false
+  modalAddEmployeers: false
 })
 
 /* ------------- Reducers ------------- */
 
-export const changeModal = (state, { visible }) =>
-  state.merge({ visible })
+export const changeModalAddEmployeers = (state, { visible }) =>
+  state.merge({ modalAddEmployeers: visible })
 
 export const setEmployeers = (state, { employeers }) =>
   state.merge({ employeers })
@@ -88,5 +88,5 @@ export const getEmployeers = (state) =>
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_EMPLOYEERS]: setEmployeers,
   [Types.GET_EMPLOYEERS]: getEmployeers,
-  [Types.CHANGE_MODAL]: changeModal
+  [Types.CHANGE_MODAL_ADD_EMPLOYEERS]: changeModalAddEmployeers
 })
