@@ -96,7 +96,7 @@ class CarDetailsScreen extends Component {
     // Get all model names
     const modelsNames = carsDetails.models.map(item => item.name)
     // Set the end arr 'cancel' option
-    const actionSheetOptions = modelsNames.concat(['Cancelar'])
+    const actionSheetOptions = [...modelsNames, 'Cancelar']
     return (
       <View style={styles.mainContainer}>
         <TouchableOpacity onPress={this.showActionSheet}>

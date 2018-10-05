@@ -11,10 +11,6 @@ import EmployeersRedux from '../Redux/EmployeersRedux'
 import styles from './Styles/FormAddEmployersStyles'
 
 class FormAddEmployers extends Component {
-  static propTypes = {
-    modal: PropTypes.bool,
-    setModalAddEmployeers: PropTypes.func
-  }
   constructor (props) {
     super(props)
     this.state = {
@@ -46,6 +42,8 @@ class FormAddEmployers extends Component {
     }
   }
   onSubmitFields = () => {
+    // name, email, phone, password
+    this.props.registerEmployeers(this.state.name, this.state.email, this.state.phone, this.state.password)
     this.props.changeModalAddEmployeers(false)
   }
   render() {
@@ -113,7 +111,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeModalAddEmployeers: (visible) => dispatch(EmployeersRedux.changeModalAddEmployeers(visible))
+    changeModalAddEmployeers: (visible) => dispatch(EmployeersRedux.changeModalAddEmployeers(visible)),
+    registerEmployeers: (name, email, phone, password) => dispatch(EmployeersRedux.registerEmployeers(name, email, phone, password))
   }
 }
 

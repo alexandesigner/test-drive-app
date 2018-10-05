@@ -109,7 +109,7 @@ class FormProfile extends Component {
           <FormLabel labelStyle={styles.labelForm}>Segurança</FormLabel>
           <Button
             small
-            buttonStyle={{ backgroundColor: '#fff', borderRadius: 3, marginTop: 15 }}
+            buttonStyle={{ borderRadius: 3, marginTop: 15 }}
             textStyle={{ color: Colors.text }}
             fontWeight='700'
             title='ALTERAR SENHA'

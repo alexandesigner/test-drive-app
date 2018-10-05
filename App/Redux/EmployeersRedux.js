@@ -1,60 +1,30 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
+import uuid from 'react-native-uuid'
+
+// Generate userId
+const genUserId = uuid.v4()
 
 const EMPLOYEER_DATA = [{
                           id: 0,
                           name: 'Amy Farha',
                           image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
                           email: 'amyfahra@gmail.com',
-                          tests: 6
+                          tests: 6,
+                          verified: true
                         }, {
                           id: 1,
                           name: 'Chris Jackson',
                           image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
                           email: 'chrisjack@gmail.com',
-                          tests: 3
-                        }, {
-                          id: 2,
-                          name: 'Amy Whinehouse',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                          email: 'amyfahra@gmail.com',
-                          tests: 0
-                        }, {
-                          id: 3,
-                          name: 'Johny B Good',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-                          email: 'chrisjack@gmail.com',
-                          tests: 25
-                        }, {
-                          id: 4,
-                          name: 'Amy Farha',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                          email: 'amyfahra@gmail.com',
-                          tests: 2
-                        }, {
-                          id: 5,
-                          name: 'Chris Jackson',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-                          email: 'chrisjack@gmail.com',
-                          tests: 1
-                        }, {
-                          id: 6,
-                          name: 'Amy Whinehouse',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                          email: 'amyfahra@gmail.com',
-                          tests: 0
-                        }, {
-                          id: 7,
-                          name: 'Johny B Good',
-                          image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-                          email: 'chrisjack@gmail.com',
-                          tests: 12
+                          tests: 3,
+                          verified: false
                         }]
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  setEmployeers: ['employeers'],
+  registerEmployeers: ['name', 'email', 'image', 'phone', 'password'],
   getEmployeers: ['employeers'],
   changeModalAddEmployeers: ['visible']
 })
@@ -74,8 +44,8 @@ export const INITIAL_STATE = Immutable({
 export const changeModalAddEmployeers = (state, { visible }) =>
   state.merge({ modalAddEmployeers: visible })
 
-export const setEmployeers = (state, { employeers }) =>
-  state.merge({ employeers })
+export const registerEmployeers = (state, { name, email, phone, password, token }) =>
+  state.merge({ employeers: [...state.employeers, { id: genUserId, name, email, image: null, phone, tests: 0, verified: false, password, token }] })
 
 export const getEmployeers = (state) =>
   state
@@ -86,7 +56,7 @@ export const getEmployeers = (state) =>
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_EMPLOYEERS]: setEmployeers,
+  [Types.REGISTER_EMPLOYEERS]: registerEmployeers,
   [Types.GET_EMPLOYEERS]: getEmployeers,
   [Types.CHANGE_MODAL_ADD_EMPLOYEERS]: changeModalAddEmployeers
 })

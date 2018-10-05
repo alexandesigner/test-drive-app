@@ -30,9 +30,6 @@ class EmployeersScreen extends Component {
                   />
     }
   }
-  constructor(props) {
-    super(props)
-  }
   onChangeModalAddEmployeers = (visible) => {
     this.props.changeModalAddEmployeers(visible)
   }

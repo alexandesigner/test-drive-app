@@ -9,7 +9,7 @@ const genUserId = uuid.v4()
 
 const { Types, Creators } = createActions({
   login: ['email', 'password'],
-  register: ['name', 'email', 'phone', 'password'],
+  register: ['name', 'email', 'phone', 'password', 'token'],
   setUser: ['name', 'email', 'phone', 'token'],
   getUser: null,
   logout: null,
