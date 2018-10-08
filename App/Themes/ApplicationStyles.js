@@ -74,9 +74,12 @@ const ApplicationStyles = {
       elevation: 1
     },
     inputField: {
-      borderBottomWidth: 1,
-      borderBottomColor: 'gray',
-      borderWidth: 1
+      borderBottomWidth: Platform.OS === 'ios' ? 1 : 0,
+      borderBottomColor: Platform.OS === 'ios' ? '#bdc6cf' : 'transparent',
+      marginLeft: Platform.OS === 'ios' ? 20 : 15,
+      marginRight: Platform.OS === 'ios' ? 20 : 15,
+      minHeight: Platform.OS === 'ios' ? 36 : 46,
+      color: '#86939e'
     },
     titleBox: {
       fontSize: 16,

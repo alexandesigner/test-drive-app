@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && npm cache clean --force && npm i",
@@ -40,8 +41,9 @@
     "react-native-config": "^0.10.0",
     "react-native-elements": "^0.19.1",
     "react-native-render-html": "^3.10.0",
+    "react-native-text-input-mask": "^0.8.0",
     "react-native-uuid": "^1.4.9",
-    "react-native-vector-icons": "^4.4.2",
+    "react-native-vector-icons": "4.6.0",
     "react-navigation": "^1.5.11",
     "react-navigation-redux-helpers": "^1.0.4",
     "react-redux": "^5.0.6",

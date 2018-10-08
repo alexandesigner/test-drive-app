@@ -110,7 +110,7 @@ class FormProfile extends Component {
           <Button
             small
             buttonStyle={{ borderRadius: 3, marginTop: 15 }}
-            textStyle={{ color: Colors.text }}
+            textStyle={{ color: '#fff' }}
             fontWeight='700'
             title='ALTERAR SENHA'
             onPress={() => this.onChangeModalNewPassword(true)}

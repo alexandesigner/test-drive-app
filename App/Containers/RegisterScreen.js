@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text } from 'react-native'
 import { FormLabel, FormInput, Button } from 'react-native-elements'
+import TextInputMask from 'react-native-text-input-mask'
 import { Colors } from '../Themes'
 
 // Redux
@@ -83,11 +84,12 @@ class RegisterScreen extends Component {
             </View>
             <View>
               <FormLabel labelStyle={styles.labelForm}>Telefone (Whatsapp)</FormLabel>
-              <FormInput
+              <TextInputMask
                 {...fieldsConfig.phone}
                 style={styles.inputField}
                 value={phone}
                 textContentType='telephoneNumber'
+                mask={"([00]) [0] [0000] [0000]"}
                 onChangeText={(phone) => this.setState({ phone })}
               />
             </View>

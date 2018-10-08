@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
+import TextInputMask from 'react-native-text-input-mask'
+
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 
 // Redux
@@ -72,12 +73,15 @@ class FormAddEmployers extends Component {
           />
         </View>
         <View>
+        </View>
+        <View>
           <FormLabel labelStyle={styles.labelForm}>Telefone (whatsapp)</FormLabel>
-          <FormInput
+          <TextInputMask
             {...fieldsConfig.phone}
             style={styles.inputField}
             value={phone}
             textContentType='telephoneNumber'
+            mask={"([00]) [0] [0000] [0000]"}
             onChangeText={(phone) => this.setState({ phone })}
           />
         </View>
