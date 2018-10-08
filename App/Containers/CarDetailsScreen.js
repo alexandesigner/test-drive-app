@@ -5,6 +5,9 @@ import { Icon, List, ListItem, Button, Card } from 'react-native-elements'
 import ActionSheet from 'react-native-actionsheet'
 import { Colors } from '../Themes'
 
+// Redux
+import CarsDetailsRedux from '../Redux/CarsDetailsRedux'
+
 // Styles
 import styles from './Styles/CarDetailsScreenStyles'
 
@@ -43,6 +46,11 @@ class CarDetailsScreen extends Component {
       carModel: props.carsDetails.models[0],
       allModels: props.carsDetails.models
     }
+  }
+  componentDidMount () {
+    const { navigation, getCarsDetails } = this.props;
+    const carId = navigation.getParam('carId', 'NO-ID');
+    getCarsDetails(carId)
   }
   showActionSheet = () => {
     this.ActionSheet.show()
@@ -143,7 +151,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    getCarsDetails: (id) => dispatch(CarsDetailsRedux.getCarsDetails(id))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarDetailsScreen)

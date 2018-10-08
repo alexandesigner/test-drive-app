@@ -38,9 +38,7 @@ class HomeScreen extends Component {
                         image={image}
                         onPress={() => {
                           navigate('CarDetailsScreen', {
-                            carId: id,
-                            carName: name,
-                            carImage: image
+                            carId: id
                           })
                         }}
                         {...this.props}
