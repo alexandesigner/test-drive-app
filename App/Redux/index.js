@@ -6,6 +6,7 @@ import rootSaga from '../Sagas/'
 export const reducers = combineReducers({
   cars: require('./CarsRedux').reducer,
   carsDetails: require('./CarsDetailsRedux').reducer,
+  testDrive: require('./TestDriveRedux').reducer,
   user: require('./UserRedux').reducer,
   faq: require('./FAQRedux').reducer,
   employeers: require('./EmployeersRedux').reducer,

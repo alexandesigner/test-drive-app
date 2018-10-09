@@ -5,6 +5,7 @@ import LaunchScreen from '../Containers/LaunchScreen'
 import EmployeersScreen from '../Containers/EmployeersScreen'
 import CarDetailsScreen from '../Containers/CarDetailsScreen'
 import TestDriveScreen from '../Containers/TestDriveScreen'
+import CustomerTestDriveScreen from '../Containers/CustomerTestDriveScreen'
 
 // Authentication
 import LoginScreen from '../Containers/LoginScreen'
@@ -20,7 +21,8 @@ const MainNavigation = StackNavigator({
   NewPasswordScreen: { screen: NewPasswordScreen },
   EmployeersScreen: { screen: EmployeersScreen },
   CarDetailsScreen: { screen: CarDetailsScreen },
-  TestDriveScreen: { screen: TestDriveScreen }
+  TestDriveScreen: { screen: TestDriveScreen },
+  CustomerTestDriveScreen: { screen: CustomerTestDriveScreen },
 }, {
   headerMode: 'float',
   navigationOptions: {

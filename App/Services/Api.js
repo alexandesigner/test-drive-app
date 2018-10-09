@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://api.punkapi.com/v2/') => {
   // ------
   // STEP 1
   // ------
@@ -38,6 +38,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
 
+  // const getBeers = () => api.get('beers')
+
   // ------
   // STEP 3
   // ------
@@ -54,7 +56,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
+    getUser,
+    // getBeers
   }
 }
 

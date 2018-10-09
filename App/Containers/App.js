@@ -11,7 +11,8 @@ const store = createStore()
 
 YellowBox.ignoreWarnings([
   "Warning: isMounted(...) is deprecated",
-  "Module RCTImageLoader"
+  "Module RCTImageLoader",
+  "Class RCTCxxModule"
 ])
 
 /**

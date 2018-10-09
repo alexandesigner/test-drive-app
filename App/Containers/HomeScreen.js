@@ -52,6 +52,7 @@ class HomeScreen extends Component {
             fontWeight='900'
             icon={{name: 'play', type: 'feather'}}
             title='INICIAR TEST DRIVE'
+            onPress={() => navigate('TestDriveScreen')}
           />
         </View>
       </View>
