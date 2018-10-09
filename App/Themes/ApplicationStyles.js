@@ -31,15 +31,21 @@ const ApplicationStyles = {
     textLight: {
       color: '#999'
     },
+    modalClose: {
+      position: 'absolute',
+      right: 20,
+      top: 5
+    },
     labelInfo: {
       alignItems: 'center',
       textAlign: 'center',
       justifyContent: 'center',
       fontSize: 16,
+      fontWeight: '700',
       padding: 20,
       borderBottomWidth: 1,
       borderBottomColor: Colors.border,
-      marginBottom: 10
+      color: Colors.text
     },
     labelForm: {
       fontSize: 16,

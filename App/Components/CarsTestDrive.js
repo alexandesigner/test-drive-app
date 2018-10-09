@@ -87,21 +87,19 @@ class CarsTestDrive extends Component {
           animationType="slide"
           transparent={false}
           visible={modalCarVersion}
-          navigation={this.props.navigation}
-          {...this.props}
         >
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
-              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>{currentModel.name}</Text>
+              <Text style={styles.modalTitle}>{currentModel.name}</Text>
               <TouchableHighlight
-                style={{ position: 'absolute', right: 20, top: 0 }}
+                style={styles.modalClose}
                 onPress={() => this.onChangeModalCarVersion(false)}>
                 <Icon name="x" type="feather" color={Colors.brand} />
               </TouchableHighlight>
               <View style={{ marginTop: 20 }}>
                 {!isObject(customerTestDrive)
-                ? <Text style={styles.labelInfo}>Qual a versão do veículo que o cliente fará o test drive ?</Text>
-                : <Text style={styles.labelInfo}>Qual a versão do veículo que o cliente está interessado?</Text> }
+                ? <Text style={styles.labelInfoInner}>Qual a versão do veículo que o cliente fará o test drive ?</Text>
+                : <Text style={styles.labelInfoInner}>Qual a versão do veículo que o cliente está interessado?</Text> }
                 <List containerStyle={{ padding: 0, marginTop: 0 }}>
                   {!isObject(currentModel) ? (
                     currentModel.models.map(item => {
@@ -122,10 +120,10 @@ class CarsTestDrive extends Component {
                                 size={26}
                                 checked={item.checked}
                                 textStyle={{ fontSize: 18 }}
-                                containerStyle={{ margin: 0, backgroundColor: 'transparent', paddingBottom: 0, borderWidth: 0, marginBottom: 0, marginLeft: 0, marginRight: 0, borderRadius: 0 }}
+                                containerStyle={styles.modalCheckbox}
                                 onPress={() => this.choiceVersion(item.id)}
                               />
-                              <Text style={{ marginLeft: 45, color: '#999', marginBottom: 10 }}>
+                              <Text style={{ marginLeft: 50, color: '#999', marginBottom: 10 }}>
                                 {item.featured.map(item => item.label).join(', ')}
                               </Text>
                             </View>

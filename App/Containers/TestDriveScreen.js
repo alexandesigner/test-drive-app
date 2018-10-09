@@ -39,10 +39,19 @@ class TestDriveScreen extends Component {
     const { carsModels, customerTestDrive } = this.props
     return (
       <View style={styles.mainContainer}>
+        {!isObject(customerTestDrive) ?
+          <View style={styles.customerTestDriveContainer}>
+            <Text style={styles.customerTestDriveTitle}>Veículo de interesse do cliente</Text>
+            <View style={styles.customerTestDriveInfo}>
+              <Text style={styles.customerTestDriveName}>{customerTestDrive.model.name} - {customerTestDrive.version.name}</Text>
+              <Text style={styles.customerTestDriveDescription}>{customerTestDrive.version.featured.map(item => item.label).join(', ')}</Text>
+            </View>
+          </View>
+        : '' }
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
             {!isObject(customerTestDrive)
-            ? <Text style={styles.labelInfo}>Qual o modelo do veículo que o cliente fará o test drive ?</Text>
+            ? <Text style={styles.labelInfo}>Agora escolha o modelo do veículo que será feito o test drive</Text>
             : <Text style={styles.labelInfo}>Qual o modelo do veículo que o cliente está interessado?</Text> }
             <List
               containerStyle={{ marginTop: 0, backgroundColor: 'transparent' }}>
@@ -60,15 +69,6 @@ class TestDriveScreen extends Component {
             </List>
           </View>
         </ScrollView>
-        {!isObject(customerTestDrive) ?
-          <View style={{ backgroundColor: '#fff', justifyContent: 'center' }}>
-            <Text style={{ backgroundColor: Colors.brand, color: '#fff', fontWeight: '700', textAlign: 'center', padding: 5 }}>Veículo de interesse do cliente</Text>
-            <View style={{ padding: 10, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <Text style={{ color: Colors.brand, fontSize: 20, fontWeight: '700', marginBottom: 5 }}>{customerTestDrive.model.name} - {customerTestDrive.version.name}</Text>
-              <Text style={{ color: '#999', fontSize: 12 }}>{customerTestDrive.version.featured.map(item => item.label).join(', ')}</Text>
-            </View>
-          </View>
-        : '' }
       </View>
     )
   }
