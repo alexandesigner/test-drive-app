@@ -109,6 +109,7 @@ class CarsTestDrive extends Component {
                           containerStyle={{ paddingTop: 0, paddingBottom: 0, paddingRight: 0 }}
                           wrapperStyle={{ marginLeft: 0 }}
                           subtitleStyle={{ marginTop: 0 }}
+                          titleStyle={{ marginTop: 0 }}
                           hideChevron
                           title={
                             <View>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Modal, TouchableHighlight, View, Alert, Platform } from 'react-native'
 import { Text, FormLabel, FormInput, Button, Avatar, Icon } from 'react-native-elements'
+import TextInputMask from 'react-native-text-input-mask'
 import { Colors } from '../Themes'
 
 // Redux
@@ -33,8 +34,17 @@ class FormProfile extends Component {
       fieldsConfig: {
         name: {
           autoCorrect: false,
-          autoCapitalize: 'none',
           placeholder: 'Informe seu nome'
+        },
+        email: {
+          autoCorrect: false,
+          autoCapitalize: 'none',
+          placeholder: 'Informe seu e-mail'
+        },
+        phone: {
+          autoCorrect: false,
+          autoCapitalize: 'none',
+          placeholder: '(xx) x xxxx-xxxx'
         }
       }
     }
@@ -97,11 +107,12 @@ class FormProfile extends Component {
         </View>
         <View>
           <FormLabel labelStyle={styles.labelForm}>Telefone (Whatsapp)</FormLabel>
-          <FormInput
+          <TextInputMask
             {...fieldsConfig.phone}
             style={styles.inputField}
             value={phone}
             textContentType='telephoneNumber'
+            mask={"([00]) [0] [0000] [0000]"}
             onChangeText={(phone) => this.setState({ phone })}
           />
         </View>

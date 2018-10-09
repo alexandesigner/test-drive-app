@@ -35,6 +35,9 @@ class TestDriveScreen extends Component {
                   />
     }
   }
+  componentDidMount () {
+    this.props.resetTestDrive()
+  }
   render () {
     const { carsModels, customerTestDrive } = this.props
     return (
@@ -82,7 +85,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    resetTestDrive: () => dispatch(TestDriveRedux.resetTestDrive())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestDriveScreen)

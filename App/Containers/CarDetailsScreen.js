@@ -102,9 +102,7 @@ class CarDetailsScreen extends Component {
       </View>
     )
     // Get all model names
-    const modelsNames = carsDetails.models.map(item => item.name)
-    // Set the end arr 'cancel' option
-    const actionSheetOptions = [...modelsNames, 'Cancelar']
+    const actionSheetOptions = carsDetails.models.map(item => item.name)
     return (
       <View style={styles.mainContainer}>
         <TouchableOpacity onPress={this.showActionSheet}>
@@ -136,7 +134,6 @@ class CarDetailsScreen extends Component {
           ref={o => this.ActionSheet = o}
           title={'Escolha o modelo'}
           options={actionSheetOptions}
-          cancelButtonIndex={actionSheetOptions.lastIndexOf()}
           onPress={(index) => this.toggleModel(index)}
         />
       </View>

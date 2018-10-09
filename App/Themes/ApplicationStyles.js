@@ -48,6 +48,7 @@ const ApplicationStyles = {
       color: Colors.text
     },
     labelForm: {
+      width: '100%',
       fontSize: 16,
       color: Colors.text
     },

@@ -7,6 +7,9 @@ import { Colors } from '../Themes'
 // Redux
 import TestDriveRedux from '../Redux/TestDriveRedux'
 
+// Components
+import FormRegisterCustomer from '../Components/FormRegisterCustomer'
+
 // Styles
 import styles from './Styles/CustomerTestDriveScreenStyles'
 
@@ -30,13 +33,11 @@ class CustomerTestDriveScreen extends Component {
     }
   }
   render () {
-    const { customerTestDrive, makeTestDrive } = this.props
     return (
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-           <Text>{JSON.stringify(customerTestDrive)}</Text>
-           <Text>{JSON.stringify(makeTestDrive)}</Text>
+        <ScrollView>
+          <View>
+            <FormRegisterCustomer {...this.props} />
           </View>
         </ScrollView>
       </View>
@@ -45,10 +46,7 @@ class CustomerTestDriveScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    customerTestDrive: state.testDrive.customerTestDrive,
-    makeTestDrive: state.testDrive.makeTestDrive
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
