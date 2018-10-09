@@ -11,7 +11,7 @@ export default class ListCars extends Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
-    image: PropTypes.string,
+    // image: PropTypes.string,
     onPress: PropTypes.func
   }
   render() {

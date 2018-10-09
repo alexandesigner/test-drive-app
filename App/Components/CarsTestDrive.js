@@ -87,6 +87,7 @@ class CarsTestDrive extends Component {
           animationType="slide"
           transparent={false}
           visible={modalCarVersion}
+          onRequestClose={() => console.log('Modal closed')}
         >
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>

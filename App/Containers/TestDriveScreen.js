@@ -50,7 +50,7 @@ class TestDriveScreen extends Component {
               <Text style={styles.customerTestDriveDescription}>{customerTestDrive.version.featured.map(item => item.label).join(', ')}</Text>
             </View>
           </View>
-        : '' }
+        : <Text></Text> }
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
             {!isObject(customerTestDrive)
