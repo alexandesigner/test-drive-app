@@ -14,7 +14,7 @@ import isObject from '../Transforms/isObject'
 import styles from './Styles/TestDriveScreenStyles'
 
 // Components
-import CarsTestDrive from '../Components/CarsTestDrive'
+import TestDriveCars from '../Components/TestDriveCars'
 
 class TestDriveScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -60,7 +60,7 @@ class TestDriveScreen extends Component {
               containerStyle={{ marginTop: 0, backgroundColor: 'transparent' }}>
               {carsModels.map((item) => {
                 return (
-                  <CarsTestDrive
+                  <TestDriveCars
                     key={item.id}
                     id={item.id}
                     name={item.name}

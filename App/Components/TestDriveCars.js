@@ -12,36 +12,32 @@ import TestDriveRedux from '../Redux/TestDriveRedux'
 import isObject from '../Transforms/isObject'
 
 // Styles
-import styles from './Styles/CarsTestDriveStyles'
+import styles from './Styles/TestDriveCarsStyles'
 
-class CarsTestDrive extends Component {
+class TestDriveCars extends Component {
   static propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     checked: PropTypes.bool
   }
-  constructor (props) {
-    super(props)
-    this.choiceVersion = this.choiceVersion.bind(this);
-  }
   onChangeModalCarVersion = (visible) => {
     this.props.changeModalCarVersion(visible)
   }
   choiceModel = (id) => {
-    this.props.changeModalCarVersion(true)
+    this.onChangeModalCarVersion(true)
     const selectedModel = this.props.carsModels.find((item) => item.id === id)
     this.props.setCurrentModel(selectedModel)
   }
-  choiceVersion(id) {
+  choiceVersion = (id) => {
     const {
-      changeModalCarVersion,
       setCurrentVersion,
       setCustomerTestDrive,
       setMakeTestDrive,
       currentModel,
       customerTestDrive
     } = this.props
-    changeModalCarVersion(false)
+
+    this.onChangeModalCarVersion(false)
 
     // Selected and set Version
     const selectedVersion = currentModel.models[id]
@@ -165,5 +161,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarsTestDrive)
+export default connect(mapStateToProps, mapDispatchToProps)(TestDriveCars)
 
