@@ -15,6 +15,7 @@ import styles from './Styles/TestDriveScreenStyles'
 
 // Components
 import TestDriveCars from '../Components/TestDriveCars'
+import ModalTestDriveVersion from '../Components/ModalTestDriveVersion'
 
 class TestDriveScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -70,6 +71,9 @@ class TestDriveScreen extends Component {
                 )
               })}
             </List>
+            <ModalTestDriveVersion
+              {...this.props}
+            />
           </View>
         </ScrollView>
       </View>
@@ -80,7 +84,7 @@ class TestDriveScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     carsModels: state.testDrive.carsModels,
-    customerTestDrive: state.testDrive.customerTestDrive
+    customerTestDrive: state.testDrive.customerTestDrive,
   }
 }
 
