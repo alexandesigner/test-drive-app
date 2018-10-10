@@ -110,6 +110,19 @@ const ApplicationStyles = {
       shadowRadius: 3,
       elevation: 1
     },
+    selectField: {
+      flex: 1,
+      borderBottomWidth: Platform.OS === 'ios' ? 1 : 0,
+      borderBottomColor: Platform.OS === 'ios' ? '#bdc6cf' : 'transparent',
+      marginLeft: Platform.OS === 'ios' ? 20 : 15,
+      marginRight: Platform.OS === 'ios' ? 20 : 15,
+      minHeight: Platform.OS === 'ios' ? 36 : 46,
+      justifyContent: 'center',
+      paddingTop: 10,
+      paddingRight: 10,
+      paddingBottom: 10,
+      marginTop: 0
+    },
     inputField: {
       borderBottomWidth: Platform.OS === 'ios' ? 1 : 0,
       borderBottomColor: Platform.OS === 'ios' ? '#bdc6cf' : 'transparent',

@@ -1,25 +1,103 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
-import { Text, FormLabel, FormInput, Button } from 'react-native-elements'
+import { Platform, View, StyleSheet } from 'react-native'
+import { Text, FormLabel, FormInput, Button, CheckBox } from 'react-native-elements'
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
+import RNPickerSelect from 'react-native-picker-select'
 import TextInputMask from 'react-native-text-input-mask'
 import { Colors } from '../Themes'
 
 // Styles
 import styles from './Styles/FormRegisterCustomerStyles'
 
+const pickerStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    color: '#86939e'
+  }
+})
+
 class FormRegisterCustomer extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      hasVehicle: 0,
+      hasVehicleIndex: 0,
+      hasVehicleOptions: [{
+        label: 'Sim',
+        value: 0
+      }, {
+        label: 'Não',
+        value: 1
+      }],
+      willNegotiation: 0,
+      willNegotiationIndex: 0,
+      willNegotiationOptions: [{
+        label: 'Sim',
+        value: 0
+      }, {
+        label: 'Não',
+        value: 1
+      }],
+      vehicles_brand: [
+        {
+          label: 'Alfa Romeo',
+          value: 'alfa_romeo',
+          models: [{
+            label: '1.0',
+            value: '1.0'
+          },
+          {
+            label: '2.0',
+            value: '2.0'
+          },
+          {
+            label: '3.0',
+            value: '3.0'
+          }]
+        },
+        {
+          label: 'Audi',
+          value: 'audi',
+          models: [{
+            label: '8.0',
+            value: '8.0'
+          },
+          {
+            label: '9.0',
+            value: '9.0'
+          },
+          {
+            label: '10.0',
+            value: '10.0'
+          }]
+        },
+        {
+          label: 'BMW',
+          value: 'bmw',
+          models: [{
+            label: '4.0',
+            value: '4.0'
+          },
+          {
+            label: '5.0',
+            value: '6.0'
+          },
+          {
+            label: '7.0',
+            value: '7.0'
+          }]
+        }
+      ],
+      current_vehicle: null,
+      vehicles_models: [],
+      current_vehicle_model: null,
       cpf: '',
       name: '',
       email: '',
       phone: '',
-      vehicle_brand: '',
-      vehicle_model: '',
-      vehicle_year: '',
+      current_vehicle_year: '',
       occupation: '',
       fieldsConfig: {
         cpf: {
@@ -40,15 +118,7 @@ class FormRegisterCustomer extends Component {
           autoCapitalize: 'none',
           placeholder: '(xx) x xxxx-xxxx'
         },
-        vehicle_brand: {
-          autoCorrect: false,
-          placeholder: 'Informe a marca do veículo'
-        },
-        vehicle_model: {
-          autoCorrect: false,
-          placeholder: 'Informe modelo do veículo'
-        },
-        vehicle_year: {
+        current_vehicle_year: {
           autoCorrect: false,
           placeholder: 'Informe o ano do veículo'
         },
@@ -61,6 +131,9 @@ class FormRegisterCustomer extends Component {
   }
   onCPFCheck = () => {
     console.log('CPF do Cliente: ', this.state.cpf)
+  }
+  onSignature = () => {
+    console.log('Assinatura')
   }
   onCNHPicture = () => {
     console.log('Tirar foto do cliente')
@@ -77,7 +150,13 @@ class FormRegisterCustomer extends Component {
       cpf: this.state.cpf,
       name: this.state.name,
       email: this.state.email,
-      phone: this.state.phone
+      phone: this.state.phone,
+      current_vehicle: this.state.current_vehicle,
+      current_vehicle_model: this.state.current_vehicle_model,
+      current_vehicle_year: this.state.current_vehicle_year,
+      occupation: this.state.occupation,
+      hasVehicle: this.state.hasVehicle,
+      willNegotiation: this.state.willNegotiation
     })
   }
   render() {
@@ -87,9 +166,16 @@ class FormRegisterCustomer extends Component {
       name,
       email,
       phone,
-      vehicle_brand,
-      vehicle_model,
-      vehicle_year,
+      vehicles_brand,
+      vehicles_models,
+      current_vehicle,
+      current_vehicle_model,
+      current_vehicle_year,
+      hasVehicle,
+      hasVehicleOptions,
+      hasVehicleIndex,
+      willNegotiationIndex,
+      willNegotiationOptions,
       occupation
     } = this.state
     return (
@@ -180,36 +266,119 @@ class FormRegisterCustomer extends Component {
           </View>
           <View style={{ borderBottomWidth: 1, borderColor: Colors.border, paddingBottom: 15 }}>
             <FormLabel labelStyle={styles.labelForm}>Atualmente o cliente possui um veículo?</FormLabel>
+            <RadioForm
+              formHorizontal={true}
+              animation={true}
+              style={{ marginLeft: 20, marginTop: 15 }}
+            >
+              {hasVehicleOptions.map((obj, i) => {
+                let isSelected = hasVehicleIndex == i;
+                return (
+                  <View key={i}>
+                    <RadioButton
+                      isSelected={isSelected}
+                      obj={obj}
+                      index={i}
+                      formHorizontal={true}
+                      labelHorizontal={true}
+                      buttonColor={Colors.brand}
+                      labelColor={'#000'}
+                      style={{ paddingRight: 20 }}
+                      onPress={(value, index) => {
+                        console.log(value, index)
+                        this.setState({ hasVehicle: value })
+                        this.setState({ hasVehicleIndex: index });
+                      }}
+                    />
+                  </View>
+                )
+              })}
+            </RadioForm>
           </View>
-          <View style={{ marginLeft: 0, marginRight: 0 }}>
-            <FormLabel labelStyle={styles.labelForm}>Marca do veículo</FormLabel>
-            <FormInput
-              {...fieldsConfig.vehicle_brand}
-              style={styles.inputField}
-              value={vehicle_brand}
-              textContentType='name'
-              onChangeText={(vehicle_brand) => this.setState({ vehicle_brand })}
-            />
-            <FormLabel labelStyle={styles.labelForm}>Modelo do veículo</FormLabel>
-            <FormInput
-              {...fieldsConfig.vehicle_model}
-              style={styles.inputField}
-              value={vehicle_model}
-              textContentType='name'
-              onChangeText={(vehicle_model) => this.setState({ vehicle_model })}
-            />
-            <FormLabel labelStyle={styles.labelForm}>Ano do veículo</FormLabel>
-            <FormInput
-              {...fieldsConfig.vehicle_year}
-              style={styles.inputField}
-              value={vehicle_year}
-              textContentType='name'
-              onChangeText={(vehicle_year) => this.setState({ vehicle_year })}
-            />
-          </View>
-          <View style={{ borderBottomWidth: 1, borderColor: Colors.border, paddingBottom: 15 }}>
-            <FormLabel labelStyle={styles.labelForm}>Utilizará na negociação?</FormLabel>
-          </View>
+          {hasVehicle !== 1 &&
+          <View>
+            <View style={{ marginLeft: 0, marginRight: 0 }}>
+              <FormLabel labelStyle={styles.labelForm}>Marca do veículo</FormLabel>
+                <View style={styles.selectField}>
+                <RNPickerSelect
+                  hideIcon
+                  style={{ ...pickerStyles }}
+                  items={vehicles_brand}
+                  placeholder={{
+                      label: 'Selecione a marca do veículo',
+                      value: null
+                  }}
+                  value={current_vehicle}
+                  onValueChange={(value) => {
+                    const brandModels = vehicles_brand.find(item => item.value === value)
+                    console.log(brandModels)
+                    this.setState({
+                      current_vehicle: value,
+                      current_vehicle_model: null,
+                      vehicles_models: brandModels.models
+                    })
+                    console.log(current_vehicle_model)
+                  }}
+                />
+              </View>
+              <FormLabel labelStyle={styles.labelForm}>Modelo do veículo</FormLabel>
+              <View style={styles.selectField}>
+                <RNPickerSelect
+                  hideIcon
+                  style={{ ...pickerStyles }}
+                  items={vehicles_models}
+                  placeholder={{
+                      label: 'Selecione o modelo do veículo',
+                      value: null
+                  }}
+                  value={current_vehicle_model}
+                  onValueChange={(value) => {
+                    this.setState({
+                      current_vehicle_model: value
+                    })
+                  }}
+                />
+              </View>
+              <FormLabel labelStyle={styles.labelForm}>Ano do veículo</FormLabel>
+              <FormInput
+                {...fieldsConfig.current_vehicle_year}
+                style={styles.inputField}
+                value={current_vehicle_year}
+                textContentType='name'
+                onChangeText={(current_vehicle_year) => this.setState({ current_vehicle_year })}
+              />
+            </View>
+            <View style={{ borderBottomWidth: 1, borderColor: Colors.border, paddingBottom: 15 }}>
+              <FormLabel labelStyle={styles.labelForm}>Utilizará na negociação?</FormLabel>
+              <RadioForm
+                formHorizontal={true}
+                animation={true}
+                style={{ marginLeft: 20, marginTop: 15 }}
+              >
+                {willNegotiationOptions.map((obj, i) => {
+                  let isSelected = willNegotiationIndex == i;
+                  return (
+                    <View key={i}>
+                      <RadioButton
+                        isSelected={isSelected}
+                        obj={obj}
+                        index={i}
+                        formHorizontal={true}
+                        labelHorizontal={true}
+                        buttonColor={Colors.brand}
+                        labelColor={'#000'}
+                        style={{ paddingRight: 20 }}
+                        onPress={(value, index) => {
+                          this.setState({ willNegotiation: value })
+                          this.setState({ willNegotiationIndex: index });
+                        }}
+                      />
+                    </View>
+                  )
+                })}
+              </RadioForm>
+            </View>
+          </View>}
           <View style={{ marginLeft: 0, marginRight: 0 }}>
             <FormLabel labelStyle={styles.labelForm}>Profissão do cliente</FormLabel>
             <FormInput
@@ -221,11 +390,27 @@ class FormRegisterCustomer extends Component {
             />
           </View>
         </View>
-        <View>
+        <View style={{ marginBottom: 20 }}>
+          <View style={{ width: '100%', backgroundColor: '#fff', marginTop: 0, marginBottom: 10, borderTopWidth: 0, borderBottomWidth: 1, borderColor: Colors.border, padding: 10 }}>
+            <Text style={{ marginLeft: 10, fontSize: 16, color: Colors.text, fontWeight: '800' }}>Termo de compromisso</Text>
+          </View>
+          <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '700', color: Colors.text }}>Para realizar o teste drive é necessário ler e concordar com o termo de compromisso</Text>
+          <View style={{ flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'column', marginTop: 10 }}>
+            <Button
+              small
+              buttonStyle={styles.buttonBrandSmall}
+              fontWeight='900'
+              fontSize={14}
+              title='ASSINAR'
+              onPress={this.onSignature}
+            />
+          </View>
+        </View>
+        <View style={{ marginBottom: 40 }}>
           <Button
             buttonStyle={styles.buttonBrand}
             fontWeight='900'
-            title='SALVAR'
+            title='CADASTRAR'
             onPress={this.onSubmitRegister}
           />
         </View>
