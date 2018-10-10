@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Platform, View, StyleSheet } from 'react-native'
-import { Text, FormLabel, FormInput, Button, CheckBox } from 'react-native-elements'
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
+import { View, StyleSheet } from 'react-native'
+import { Text, FormLabel, FormInput, Button } from 'react-native-elements'
+import RadioForm, {RadioButton} from 'react-native-simple-radio-button'
 import RNPickerSelect from 'react-native-picker-select'
 import TextInputMask from 'react-native-text-input-mask'
 import { Colors } from '../Themes'
+
+// Redux
+import TestDriveRedux from '../Redux/TestDriveRedux'
 
 // Styles
 import styles from './Styles/FormRegisterCustomerStyles'
@@ -133,7 +135,7 @@ class FormRegisterCustomer extends Component {
     console.log('CPF do Cliente: ', this.state.cpf)
   }
   onSignature = () => {
-    console.log('Assinatura')
+    this.props.onModalSignature(true)
   }
   onCNHPicture = () => {
     console.log('Tirar foto do cliente')
@@ -420,11 +422,15 @@ class FormRegisterCustomer extends Component {
 }
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    modalSignature: state.testDrive.modalSignature
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    onModalSignature: (visible) => dispatch(TestDriveRedux.onModalSignature(visible))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormRegisterCustomer)

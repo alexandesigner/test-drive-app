@@ -9,6 +9,7 @@ import TestDriveRedux from '../Redux/TestDriveRedux'
 
 // Components
 import FormRegisterCustomer from '../Components/FormRegisterCustomer'
+import ModalSignature from '../Components/ModalSignature'
 
 // Styles
 import styles from './Styles/CustomerTestDriveScreenStyles'
@@ -37,9 +38,14 @@ class CustomerTestDriveScreen extends Component {
       <View style={styles.mainContainer}>
         <ScrollView>
           <View>
-            <FormRegisterCustomer {...this.props} />
+            <FormRegisterCustomer
+              {...this.props}
+            />
           </View>
         </ScrollView>
+        <ModalSignature
+          {...this.props}
+        />
       </View>
     )
   }

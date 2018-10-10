@@ -26,6 +26,7 @@
     "haul": "haul start"
   },
   "dependencies": {
+    "@terrylinla/react-native-sketch-canvas": "^0.8.0",
     "apisauce": "^0.14.2",
     "buffer": "^5.2.1",
     "format-json": "^1.0.3",

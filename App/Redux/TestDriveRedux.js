@@ -120,6 +120,7 @@ const { Types, Creators } = createActions({
   setCustomerTestDrive: ['customerTestDrive'],
   setMakeTestDrive: ['makeTestDrive'],
   changeModalCarVersion: ['visible'],
+  onModalSignature: ['visible'],
   resetTestDrive: null
 })
 
@@ -134,7 +135,8 @@ export const INITIAL_STATE = Immutable({
   currentVersion: {},
   customerTestDrive: {},
   makeTestDrive: {},
-  modalCarVersion: false
+  modalCarVersion: false,
+  modalSignature: false
 })
 
 /* ------------- Reducers ------------- */
@@ -163,6 +165,9 @@ export const setMakeTestDrive = (state, { makeTestDrive }) =>
 export const changeModalCarVersion = (state, { visible }) =>
   state.merge({ modalCarVersion: visible })
 
+export const onModalSignature = (state, { visible }) =>
+  state.merge({ modalSignature: visible })
+
 /* ------------- Selectors ------------- */
 
 
@@ -176,5 +181,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_CUSTOMER_TEST_DRIVE]: setCustomerTestDrive,
   [Types.SET_MAKE_TEST_DRIVE]: setMakeTestDrive,
   [Types.RESET_TEST_DRIVE]: resetTestDrive,
-  [Types.CHANGE_MODAL_CAR_VERSION]: changeModalCarVersion
+  [Types.CHANGE_MODAL_CAR_VERSION]: changeModalCarVersion,
+  [Types.ON_MODAL_SIGNATURE]: onModalSignature
 })
