@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, StatusBar } from 'react-native'
 import { Button } from 'react-native-elements'
 import { Colors } from '../Themes'
-
-// Redux
-import StartupRedux from '../Redux/StartupRedux'
 
 // Styles
 import styles from './Styles/HomeScreenStyles'
@@ -19,7 +16,7 @@ class HomeScreen extends Component {
     header: false
   }
   componentDidMount() {
-    this.props.setStatusBar(false)
+    StatusBar.setHidden(false)
   }
   render () {
     const { cars } = this.props
@@ -73,9 +70,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setStatusBar: (visible) => dispatch(StartupRedux.setStatusBar(visible))
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

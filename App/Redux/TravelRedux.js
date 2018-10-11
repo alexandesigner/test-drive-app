@@ -4,21 +4,26 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  startup: null
+  setTravelStarted: null
 })
 
-export const StartupTypes = Types
+export const TravelTypes = Types
 export default Creators
 
 /* ------------- Initial State ------------- */
 
-export const INITIAL_STATE = Immutable({})
+export const INITIAL_STATE = Immutable({
+  travelStarted: false
+})
 
 /* ------------- Reducers ------------- */
+
+export const setTravelStarted = (state, { started }) =>
+  state.merge({ travelStarted: started })
 
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  // [Types.STARTUP]: setStartup
+  [Types.SET_TRAVEL_STARTED]: setTravelStarted
 })

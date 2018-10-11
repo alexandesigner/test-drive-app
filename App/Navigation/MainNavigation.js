@@ -8,6 +8,7 @@ import TestDriveScreen from '../Containers/TestDriveScreen'
 import CustomerTestDriveScreen from '../Containers/CustomerTestDriveScreen'
 import GetKeyScreen from '../Containers/GetKeyScreen'
 import InitTravelScreen from '../Containers/InitTravelScreen'
+import TravelScreen from '../Containers/TravelScreen'
 
 // Authentication
 import LoginScreen from '../Containers/LoginScreen'
@@ -27,6 +28,7 @@ const MainNavigation = StackNavigator({
   CustomerTestDriveScreen: { screen: CustomerTestDriveScreen },
   GetKeyScreen: { screen: GetKeyScreen },
   InitTravelScreen: { screen: InitTravelScreen },
+  TravelScreen: { screen: TravelScreen },
 }, {
   headerMode: 'float',
   navigationOptions: {

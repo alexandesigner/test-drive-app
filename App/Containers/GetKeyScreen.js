@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Dimensions, View, Text, TouchableHighlight, Clipboard } from 'react-native'
+import { StatusBar, Dimensions, View, Text, TouchableHighlight, Clipboard } from 'react-native'
 import { Icon, Button } from 'react-native-elements'
 import { Colors } from '../Themes'
-
-// Redux
-import StartupActions from '../Redux/StartupRedux'
 
 // Styles
 import styles from './Styles/GetKeyScreenStyles'
@@ -22,10 +19,10 @@ class GetKeyScreen extends Component {
     }
   }
   componentDidMount() {
-    this.props.setStatusBar(true)
+    StatusBar.setHidden(true)
   }
   componentWillUnmount() {
-    this.props.setStatusBar(false)
+    StatusBar.setHidden(false)
   }
   copySecurityCode = () => {
     Clipboard.setString(this.state.securityCode)
@@ -72,9 +69,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setStatusBar: (visible) => dispatch(StartupActions.setStatusBar(visible))
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetKeyScreen)

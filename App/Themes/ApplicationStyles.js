@@ -1,5 +1,4 @@
 import { Platform } from 'react-native'
-import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
 
@@ -134,6 +133,20 @@ const ApplicationStyles = {
       shadowRadius: 0,
       elevation: 0,
       width: 300
+    },
+    buttonDanger: {
+      marginTop: 10,
+      backgroundColor: '#D0201C',
+      borderWidth: 0,
+      borderRadius: 0,
+      borderColor: 'transparent',
+      shadowColor: 'transparent',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+      marginLeft: 0,
+      marginRight: 0
     },
     selectField: {
       flex: 1,

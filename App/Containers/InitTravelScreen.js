@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Dimensions, View, Text, TouchableHighlight } from 'react-native'
-import { Icon, Button } from 'react-native-elements'
-import { Colors } from '../Themes'
-
-// Redux
-import StartupActions from '../Redux/StartupRedux'
+import { Dimensions, View, Text, TouchableHighlight, StatusBar } from 'react-native'
+import { Icon } from 'react-native-elements'
 
 // Styles
 import styles from './Styles/InitTravelScreenStyles'
@@ -14,15 +10,11 @@ class InitTravelScreen extends Component {
   static navigationOptions = {
     header: false
   }
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
   componentDidMount() {
-    this.props.setStatusBar(true)
+    StatusBar.setHidden(true)
   }
   componentWillUnmount() {
-    this.props.setStatusBar(false)
+    StatusBar.setHidden(false)
   }
   render () {
     return (
@@ -36,7 +28,7 @@ class InitTravelScreen extends Component {
         </TouchableHighlight>
         <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-            <TouchableHighlight underlayColor='transparent' onPress={() => this.props.navigation.navigate('GetKeyScreen')}>
+            <TouchableHighlight underlayColor='transparent' onPress={() => this.props.navigation.navigate('TravelScreen')}>
               <View style={{ backgroundColor: 'rgba(0,0,0,0.2)', marginBottom: 15, borderWidth: 10, borderColor: 'rgba(0,0,0,0.1)', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2, width: Dimensions.get('window').width * 0.5, height: Dimensions.get('window').width * 0.5 }}>
                 <Icon containerStyle={{ marginLeft: 5 }} name="play" type="feather" size={72} color="#fff" />
               </View>
@@ -55,9 +47,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setStatusBar: (visible) => dispatch(StartupActions.setStatusBar(visible))
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InitTravelScreen)
