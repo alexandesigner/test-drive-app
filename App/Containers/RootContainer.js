@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
+
+// Redux
 import StartupActions from '../Redux/StartupRedux'
 
 // Styles
@@ -15,16 +17,22 @@ class RootContainer extends Component {
   render () {
     return (
       <View style={styles.applicationView}>
-        <StatusBar barStyle='dark-content' />
+        <StatusBar hidden={this.props.statusBarVisible} barStyle='dark-content' />
         <ReduxNavigation />
       </View>
     )
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
+const mapStateToProps = (state) => {
+  return {
+    statusBarVisible: state.startup.statusBarVisible
+  }
+}
+
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(StartupActions.startup())
+  startup: () => dispatch(StartupActions.startup()),
+  setStatusBar: (visible) => dispatch(StartupActions.setStatusBar(visible))
 })
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)

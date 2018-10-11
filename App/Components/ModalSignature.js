@@ -31,7 +31,10 @@ class ModalSignature extends Component {
           <Text style={styles.modalTitle}>Assinatura do cliente</Text>
           <TouchableHighlight
             style={styles.modalClose}
-            onPress={() => this.evtModalSignature(false)}>
+            onPress={() => {
+              this.evtModalSignature(false)
+              this.signatureCanvas.clear()
+            }}>
             <Icon name="x" type="feather" color={Colors.brand} />
           </TouchableHighlight>
           <View style={{ marginTop: 10 }}>
@@ -39,6 +42,7 @@ class ModalSignature extends Component {
           </View>
           <View style={{ backgroundColor: '#f1f1f1', marginTop: 5, borderTopWidth: 1, borderBottomWidth: 1, borderColor: Colors.border, marginBottom: 10, flex: 1, flexDirection: 'row' }}>
             <SketchCanvas
+              ref={ref => this.signatureCanvas = ref}
               style={{ flex: 1 }}
               strokeColor={Colors.brand}
               strokeWidth={2}
@@ -47,14 +51,17 @@ class ModalSignature extends Component {
         </View>
         <View style={{ marginBottom: 20 }}>
           <Button
-            buttonStyle={styles.buttonBrand}
+            buttonStyle={styles.buttonLight}
             fontWeight='900'
             title='LIMPAR'
+            color={Colors.brand}
+            onPress={() => this.signatureCanvas.clear()}
           />
           <Button
             buttonStyle={styles.buttonBrand}
             fontWeight='900'
             title='CONFIRMAR'
+            onPress={() => console.log('Salvo!')}
           />
         </View>
       </Modal>

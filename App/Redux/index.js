@@ -12,7 +12,8 @@ export const reducers = combineReducers({
   employeers: require('./EmployeersRedux').reducer,
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
-  search: require('./SearchRedux').reducer
+  search: require('./SearchRedux').reducer,
+  startup: require('./StartupRedux').reducer
 })
 
 export default () => {

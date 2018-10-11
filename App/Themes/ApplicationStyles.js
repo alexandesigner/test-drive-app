@@ -34,7 +34,7 @@ const ApplicationStyles = {
     modalClose: {
       position: 'absolute',
       right: 20,
-      top: 5
+      top: 3
     },
     labelInfo: {
       alignItems: 'center',
@@ -109,6 +109,31 @@ const ApplicationStyles = {
       shadowOpacity: 0.8,
       shadowRadius: 3,
       elevation: 1
+    },
+    buttonLight: {
+      marginTop: 10,
+      backgroundColor: '#fff',
+      borderWidth: 1,
+      borderRadius: 3,
+      borderColor: Colors.border,
+      shadowColor: Colors.border,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 3,
+      elevation: 1
+    },
+    buttonWhite: {
+      marginTop: 10,
+      backgroundColor: '#fff',
+      borderWidth: 0,
+      borderRadius: 3,
+      borderColor: 'transparent',
+      shadowColor: 'transparent',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+      width: 300
     },
     selectField: {
       flex: 1,

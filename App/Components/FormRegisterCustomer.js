@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Dimensions } from 'react-native'
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements'
 import RadioForm, {RadioButton} from 'react-native-simple-radio-button'
 import RNPickerSelect from 'react-native-picker-select'
+import HTML from 'react-native-render-html'
 import TextInputMask from 'react-native-text-input-mask'
 import { Colors } from '../Themes'
 
@@ -24,6 +25,7 @@ class FormRegisterCustomer extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      terms: '<p><strong style="margin-bottom: 15px;">Declaro que: </strong><ul><li>Possuo carteira de Habilitação válida e estou em condições físicas e psicológicas para participar do test drive</li><li>Possuo carteira de Habilitação válida e estou em condições físicas e psicológicas para participar do test drive</li></ul><strong style="margin-bottom: 15px;">Declaro que: </strong><ul><li>Possuo carteira de Habilitação válida e estou em condições físicas e psicológicas para participar do test drive</li><li>Possuo carteira de Habilitação válida e estou em condições físicas e psicológicas para participar do test drive</li></ul></p>',
       hasVehicle: 0,
       hasVehicleIndex: 0,
       hasVehicleOptions: [{
@@ -160,6 +162,7 @@ class FormRegisterCustomer extends Component {
       hasVehicle: this.state.hasVehicle,
       willNegotiation: this.state.willNegotiation
     })
+    this.props.navigation.navigate('GetKeyScreen')
   }
   render() {
     const {
@@ -217,7 +220,7 @@ class FormRegisterCustomer extends Component {
               buttonStyle={styles.buttonBrandSmall}
               fontWeight='900'
               fontSize={14}
-              title='CONTINUAR'
+              title='FOTOGRAFAR DOCUMENTO'
               onPress={this.onCNHPicture}
             />
           </View>
@@ -397,13 +400,20 @@ class FormRegisterCustomer extends Component {
             <Text style={{ marginLeft: 10, fontSize: 16, color: Colors.text, fontWeight: '800' }}>Termo de compromisso</Text>
           </View>
           <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '700', color: Colors.text }}>Para realizar o teste drive é necessário ler e concordar com o termo de compromisso</Text>
+          <View style={{ padding: 10, backgroundColor: '#fff', marginTop: 10, marginBottom: 10 }}>
+            <HTML
+              html={this.state.terms}
+              baseFontStyle={{ fontSize: 12, lineHeight: 16, color: Colors.textLight, marginBottom: 10 }}
+              imagesMaxWidth={Dimensions.get('window').width}
+            />
+          </View>
           <View style={{ flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'column', marginTop: 10 }}>
             <Button
               small
               buttonStyle={styles.buttonBrandSmall}
               fontWeight='900'
               fontSize={14}
-              title='ASSINAR'
+              title='ASSINAR TERMO'
               onPress={this.onSignature}
             />
           </View>

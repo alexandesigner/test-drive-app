@@ -12,7 +12,8 @@ const store = createStore()
 YellowBox.ignoreWarnings([
   "Warning: isMounted(...) is deprecated",
   "Module RCTImageLoader",
-  "Class RCTCxxModule"
+  "Class RCTCxxModule",
+  "Remote debugger"
 ])
 
 /**
