@@ -26,7 +26,7 @@ class TravelScreen extends Component {
   render () {
     return (
       <View style={styles.mainContainerTravel}>
-        <View style={{ padding: 10, marginTop: Platform.OS === 'ios' ? 20 : StatusBar.currentHeight }}>
+        <View style={{ padding: 10, marginTop: Platform.OS === 'ios' ? 20 : 0 }}>
           <Text style={{ color: '#fff' }}>Informações da viagem</Text>
         </View>
         <ScrollView>
