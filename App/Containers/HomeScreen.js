@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, View, StatusBar } from 'react-native'
+import { ScrollView, View, StatusBar, Image } from 'react-native'
 import { Button } from 'react-native-elements'
-import { Colors } from '../Themes'
+import { Colors, Images } from '../Themes'
 
 // Styles
 import styles from './Styles/HomeScreenStyles'
@@ -24,7 +24,7 @@ class HomeScreen extends Component {
     return (
       <View style={styles.mainContainer}>
         <Toolbar
-          title="Test Drive App"
+          title={<Image source={Images.logo} style={{ width: 206, height: 42, alignItems: 'center', justifyContent: 'center', marginTop: 10 }} />}
           bgColor={Colors.transparent}
           isIcon
           noStyled

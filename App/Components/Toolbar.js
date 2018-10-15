@@ -48,7 +48,10 @@ export default class Toolbar extends Component {
     noStyled: false
   }
   static propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]),
     bgColor: PropTypes.string,
     isIcon: PropTypes.bool,
     noStyled: PropTypes.bool,
@@ -59,7 +62,7 @@ export default class Toolbar extends Component {
       <Header
         statusBarProps={{ barStyle: 'dark-content' }}
         leftComponent={<ButtonToggle navigation={this.props.navigation} />}
-        centerComponent={{ text: this.props.title, style: { color: Colors.text, fontSize: 22 } }}
+        centerComponent={{ text: this.props.title, style: { color: Colors.text, fontSize: 22, marginTop: 8 }}}
         rightComponent={<ButtonEmployeers isIcon={this.props.isIcon} navigation={this.props.navigation} />}
         outerContainerStyles={toolbarStyles(this.props)}
       />

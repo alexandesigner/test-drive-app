@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, View, TouchableHighlight } from 'react-native'
+import { ScrollView, View, TouchableHighlight, Image } from 'react-native'
 import { Button, Text } from 'react-native-elements'
-import { Colors } from '../Themes'
+import { Colors, Images } from '../Themes'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -15,37 +15,30 @@ class LaunchScreen extends Component {
     const { navigate } = this.props.navigation
     return (
       <View style={styles.mainContainer}>
-        <View>
-          <Text style={{ fontSize: 24, color: Colors.text, alignItems: 'center', justifyContent: 'center', marginTop: 40, textAlign: 'center' }}>Test Drive App</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 30 }}>
+          <Image source={Images.mainLogo} style={{ marginTop: 60, width: 220, height: 220 }} resizeMode="stretch" />
         </View>
         <ScrollView style={styles.container}>
           <View style={styles.section}>
             <Button
               buttonStyle={styles.buttonBrand}
-              title='Home'
-              fontWeight='900'
-              onPress={() => navigate('DrawerNavigation')}
-            />
-            <Button
-              buttonStyle={styles.buttonBrand}
-              title='Login'
+              title='Fazer login'
               fontWeight='900'
               onPress={() => navigate('LoginScreen')}
             />
             <Button
-              buttonStyle={styles.buttonBrand}
-              title='Cadastro'
+              buttonStyle={styles.buttonDefault}
+              title='Cadastrar'
               fontWeight='900'
+              color={Colors.brand}
               onPress={() => navigate('RegisterScreen')}
-            />
-            <Button
-              buttonStyle={styles.buttonBrand}
-              title='Nova Senha'
-              fontWeight='900'
-              onPress={() => navigate('NewPasswordScreen')}
             />
           </View>
         </ScrollView>
+        <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+          <Text style={{ fontSize: 12, color: '#999', marginBottom: 10 }}>Versão 1.0</Text>
+          <Text style={{ fontSize: 10, color: '#999' }}>(c) 2018</Text>
+        </View>
       </View>
     )
   }

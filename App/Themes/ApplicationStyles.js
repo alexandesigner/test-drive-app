@@ -109,6 +109,19 @@ const ApplicationStyles = {
       shadowRadius: 3,
       elevation: 1
     },
+    buttonDefault: {
+      marginTop: 10,
+      backgroundColor: '#fff',
+      borderWidth: 1,
+      borderRadius: 3,
+      borderColor: Colors.border,
+      borderBottomWidth: 0,
+      shadowColor: Colors.border,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 3,
+      elevation: 1
+    },
     buttonLight: {
       marginTop: 10,
       backgroundColor: '#fff',
