@@ -49,7 +49,7 @@ class EmployeersScreen extends Component {
         <View style={{ marginBottom: 15 }}>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             icon={{name: 'plus', type: 'feather'}}
             title='CADASTRAR COLABORADOR'
             onPress={() => this.onChangeModalAddEmployeers(true)}
@@ -62,7 +62,7 @@ class EmployeersScreen extends Component {
           onRequestClose={() => Alert.alert('Modal has been closed.')}>
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
-              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Cadastrar colaborador</Text>
+              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '600' }}>Cadastrar colaborador</Text>
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
                 onPress={() => this.onChangeModalAddEmployeers(false)}>

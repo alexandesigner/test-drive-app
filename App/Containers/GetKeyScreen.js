@@ -51,7 +51,7 @@ class GetKeyScreen extends Component {
             <Text style={{ fontSize: 14, marginTop: 5, marginBottom: 10, fontWeight: '400', lineHeight: 16, color: '#fff', textAlign: 'center' }}>Dirija-se para pegar a chave do veículo e use o código de liberação.</Text>
             <Button
               buttonStyle={styles.buttonWhite}
-              fontWeight='900'
+              fontWeight='600'
               fontSize={14}
               title='CONTINUAR'
               color={Colors.success}

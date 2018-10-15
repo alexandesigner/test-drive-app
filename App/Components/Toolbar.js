@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { Header, Icon } from 'react-native-elements'
 import { Colors } from '../Themes'
@@ -38,33 +38,33 @@ const toolbarStyles = (props) => {
     shadowOffset: !noStyled && isAndroid ? { width: 0, height: 2 } : null,
     shadowOpacity: !noStyled && isAndroid ? 0.2 : null,
     shadowRadius: !noStyled && isAndroid ? 1.2 : null,
-    elevation: !noStyled && isAndroid ? 3 : 0
+    elevation: !noStyled && isAndroid ? 3 : 0,
+    marginTop: Platform.OS === 'ios' ? 20 : 0
   }
 }
 
 export default class Toolbar extends Component {
   static defaultProps = {
     isIcon: false,
-    noStyled: false
+    noStyled: false,
+    hideText: false
   }
   static propTypes = {
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object
-    ]),
     bgColor: PropTypes.string,
     isIcon: PropTypes.bool,
     noStyled: PropTypes.bool,
     navigation: PropTypes.object,
+    hideText: PropTypes.bool
   }
   render() {
     return (
       <Header
         statusBarProps={{ barStyle: 'dark-content' }}
         leftComponent={<ButtonToggle navigation={this.props.navigation} />}
-        centerComponent={{ text: this.props.title, style: { color: Colors.text, fontSize: 22, marginTop: 8 }}}
+        centerComponent={this.props.hideText ? <View>{this.props.title}</View> : { text: this.props.title, style: { color: Colors.text, fontSize: 22 }}}
         rightComponent={<ButtonEmployeers isIcon={this.props.isIcon} navigation={this.props.navigation} />}
         outerContainerStyles={toolbarStyles(this.props)}
+        innerContainerStyles={this.props.hideText ? { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' } : ''}
       />
     )
   }

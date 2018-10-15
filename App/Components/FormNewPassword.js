@@ -101,7 +101,7 @@ class FormNewPassword extends Component {
         <View>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             title='CONFIRMAR'
             onPress={this.onSubmitFields}
           />

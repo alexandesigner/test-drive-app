@@ -52,14 +52,14 @@ class ModalSignature extends Component {
         <View style={{ marginBottom: 20 }}>
           <Button
             buttonStyle={styles.buttonLight}
-            fontWeight='900'
+            fontWeight='600'
             title='LIMPAR'
             color={Colors.brand}
             onPress={() => this.signatureCanvas.clear()}
           />
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             title='CONFIRMAR'
             onPress={() => console.log('Salvo!')}
           />

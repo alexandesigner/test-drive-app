@@ -32,11 +32,11 @@ class TravelScreen extends Component {
         <ScrollView>
           <Text style={{ color: '#fff' }}>MAPA</Text>
         </ScrollView>
-        <View>
+        <View style={{ backgroundColor: '#D0201C' }}>
           <Button
             buttonStyle={styles.buttonDanger}
             title='FINALIZAR TEST DRIVE'
-            fontWeight='900'
+            fontWeight='600'
             color='#fff'
             onPress={() => console.log('ae')}
           />

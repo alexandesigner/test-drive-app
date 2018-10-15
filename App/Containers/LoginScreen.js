@@ -86,7 +86,7 @@ class LoginScreen extends Component {
             <View>
               <Button
                 buttonStyle={styles.buttonBrand}
-                fontWeight='900'
+                fontWeight='600'
                 title='ENTRAR'
                 onPress={this.loginUser}
               />

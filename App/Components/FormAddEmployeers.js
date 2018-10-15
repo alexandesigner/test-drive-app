@@ -99,7 +99,7 @@ class FormAddEmployers extends Component {
         <View style={{ marginTop: 10 }}>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             title='CONFIRMAR'
             onPress={this.onSubmitFields}
           />

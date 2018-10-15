@@ -80,7 +80,7 @@ class FormProfile extends Component {
             small
             buttonStyle={styles.buttonBrandSmall}
             fontSize={14}
-            fontWeight='900'
+            fontWeight='600'
             title='TROCAR FOTO'
           />
         </View>
@@ -122,7 +122,7 @@ class FormProfile extends Component {
             small
             buttonStyle={{ borderRadius: 3, marginTop: 15 }}
             textStyle={{ color: '#fff' }}
-            fontWeight='700'
+            fontWeight='600'
             title='ALTERAR SENHA'
             onPress={() => this.onChangeModalNewPassword(true)}
           />
@@ -130,7 +130,7 @@ class FormProfile extends Component {
         <View>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             title='SALVAR'
             onPress={this.onUpdateUser}
           />
@@ -142,7 +142,7 @@ class FormProfile extends Component {
           onRequestClose={() => Alert.alert('Modal has been closed.')}>
           <View style={{marginTop: Platform.OS === 'android' ? 22 : 42}}>
             <View>
-              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '700' }}>Alterar senha</Text>
+              <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '600' }}>Alterar senha</Text>
               <TouchableHighlight
                 style={{ position: 'absolute', right: 20, top: 0 }}
                 onPress={() => this.onChangeModalNewPassword(false)}>

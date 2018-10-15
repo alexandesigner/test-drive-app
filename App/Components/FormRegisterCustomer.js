@@ -202,7 +202,7 @@ class FormRegisterCustomer extends Component {
             <Button
               small
               buttonStyle={styles.buttonBrandSmall}
-              fontWeight='900'
+              fontWeight='600'
               fontSize={14}
               title='CONTINUAR'
               onPress={this.onCPFCheck}
@@ -213,12 +213,12 @@ class FormRegisterCustomer extends Component {
           <View style={{ width: '100%', backgroundColor: '#fff', marginTop: 0, marginBottom: 10, borderTopWidth: 0, borderBottomWidth: 1, borderColor: Colors.border, padding: 10 }}>
             <Text style={{ marginLeft: 10, fontSize: 16, color: Colors.text, fontWeight: '800' }}>CNH</Text>
           </View>
-          <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '700', color: Colors.text }}>É necessário apresentar uma Carteira Nacional de Habilitação (CNH) válida</Text>
+          <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '600', color: Colors.text }}>É necessário apresentar uma Carteira Nacional de Habilitação (CNH) válida</Text>
           <View style={{ flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'column', marginTop: 10 }}>
             <Button
               small
               buttonStyle={styles.buttonBrandSmall}
-              fontWeight='900'
+              fontWeight='600'
               fontSize={14}
               title='FOTOGRAFAR DOCUMENTO'
               onPress={this.onCNHPicture}
@@ -258,7 +258,7 @@ class FormRegisterCustomer extends Component {
             <Button
               small
               buttonStyle={styles.buttonBrandSmall}
-              fontWeight='900'
+              fontWeight='600'
               fontSize={14}
               title='CONTINUAR'
               onPress={this.onContactData}
@@ -399,7 +399,7 @@ class FormRegisterCustomer extends Component {
           <View style={{ width: '100%', backgroundColor: '#fff', marginTop: 0, marginBottom: 10, borderTopWidth: 0, borderBottomWidth: 1, borderColor: Colors.border, padding: 10 }}>
             <Text style={{ marginLeft: 10, fontSize: 16, color: Colors.text, fontWeight: '800' }}>Termo de compromisso</Text>
           </View>
-          <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '700', color: Colors.text }}>Para realizar o teste drive é necessário ler e concordar com o termo de compromisso</Text>
+          <Text style={{ fontSize: 14, marginLeft: 20, marginTop: 10, marginBottom: 10, marginRight: 20, fontWeight: '600', color: Colors.text }}>Para realizar o teste drive é necessário ler e concordar com o termo de compromisso</Text>
           <View style={{ padding: 10, backgroundColor: '#fff', marginTop: 10, marginBottom: 10 }}>
             <HTML
               html={this.state.terms}
@@ -411,7 +411,7 @@ class FormRegisterCustomer extends Component {
             <Button
               small
               buttonStyle={styles.buttonBrandSmall}
-              fontWeight='900'
+              fontWeight='600'
               fontSize={14}
               title='ASSINAR TERMO'
               onPress={this.onSignature}
@@ -421,7 +421,7 @@ class FormRegisterCustomer extends Component {
         <View style={{ marginBottom: 40 }}>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             title='CADASTRAR'
             onPress={this.onSubmitRegister}
           />

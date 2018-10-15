@@ -24,9 +24,10 @@ class HomeScreen extends Component {
     return (
       <View style={styles.mainContainer}>
         <Toolbar
-          title={<Image source={Images.logo} style={{ width: 206, height: 42, alignItems: 'center', justifyContent: 'center', marginTop: 10 }} />}
+          title={<Image source={Images.logo} style={{ width: 206, height: 42, paddingTop: 15 }} />}
           bgColor={Colors.transparent}
           isIcon
+          hideText
           noStyled
           {...this.props}
         />
@@ -52,7 +53,7 @@ class HomeScreen extends Component {
         <View style={{ marginBottom: 15 }}>
           <Button
             buttonStyle={styles.buttonBrand}
-            fontWeight='900'
+            fontWeight='600'
             icon={{name: 'play', type: 'feather'}}
             title='INICIAR TEST DRIVE'
             onPress={() => navigate('TestDriveScreen')}
