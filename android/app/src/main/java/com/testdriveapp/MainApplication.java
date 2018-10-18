@@ -3,6 +3,10 @@ package com.testdriveapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.mapbox.rctmgl.RCTMGLPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.github.yamill.orientation.OrientationPackage;
+import cl.json.RNSharePackage;
 import com.terrylinla.rnsketchcanvas.SketchCanvasPackage;
 import com.RNTextInputMask.RNTextInputMaskPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +31,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RCTMGLPackage(),
+            new SplashScreenReactPackage(),
+            new OrientationPackage(),
+            new RNSharePackage(),
             new SketchCanvasPackage(),
             new RNTextInputMaskPackage(),
             new VectorIconsPackage(),

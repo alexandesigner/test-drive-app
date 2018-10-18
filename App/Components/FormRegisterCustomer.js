@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, StyleSheet, Dimensions } from 'react-native'
+import { View, StyleSheet, Dimensions, StatusBar } from 'react-native'
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements'
 import RadioForm, {RadioButton} from 'react-native-simple-radio-button'
 import RNPickerSelect from 'react-native-picker-select'
@@ -137,6 +137,7 @@ class FormRegisterCustomer extends Component {
     console.log('CPF do Cliente: ', this.state.cpf)
   }
   onSignature = () => {
+    StatusBar.setHidden(true)
     this.props.onModalSignature(true)
   }
   onCNHPicture = () => {

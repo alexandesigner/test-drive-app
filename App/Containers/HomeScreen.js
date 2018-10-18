@@ -32,7 +32,7 @@ class HomeScreen extends Component {
           {...this.props}
         />
         <ScrollView style={styles.container}>
-          <View style={{ padding: 10 }}>
+          <View style={{ paddingRight: 10, paddingLeft: 10, paddingBottom: 10 }}>
             {cars.map(details => {
               const { id, name, image } = details
               return <ListCars

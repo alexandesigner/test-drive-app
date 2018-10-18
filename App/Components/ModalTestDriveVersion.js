@@ -88,7 +88,10 @@ class ModalTestDriveVersion extends Component {
                               checked={item.checked}
                               textStyle={{ fontSize: 18 }}
                               containerStyle={styles.modalCheckbox}
-                              onPress={() => this.choiceVersion(item.id)}
+                              onPress={() => {
+                                console.log('ae')
+                                this.choiceVersion(item.id)
+                              }}
                             />
                             <Text style={{ marginLeft: 50, color: '#999', marginBottom: 10 }}>
                               {item.featured.map(item => item.label).join(', ')}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
+import Orientation from 'react-native-orientation'
 
 // Redux
 import StartupRedux from '../Redux/StartupRedux'
@@ -10,6 +11,10 @@ import StartupRedux from '../Redux/StartupRedux'
 import styles from './Styles/RootContainerStyles'
 
 class RootContainer extends Component {
+  constructor(props) {
+    super(props)
+    Orientation.lockToPortrait()
+  }
   componentDidMount () {
     this.props.startup()
   }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native'
 import { Icon, List, ListItem, Button, Card } from 'react-native-elements'
 import ActionSheet from 'react-native-actionsheet'
+import Share from 'react-native-share'
 import { Colors } from '../Themes'
 
 // Redux
@@ -13,6 +14,7 @@ import styles from './Styles/CarDetailsScreenStyles'
 
 class CarDetailsScreen extends Component {
   static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state
     return {
       headerMode: 'float',
       headerStyle: {
@@ -36,7 +38,7 @@ class CarDetailsScreen extends Component {
                     type="feather"
                     name="share"
                     color={Colors.brand}
-                    onPress={() => console.log('ae')}
+                    onPress={() => params.shareDetails()}
                   />
     }
   }
@@ -51,6 +53,18 @@ class CarDetailsScreen extends Component {
     const { navigation, getCarsDetails } = this.props;
     const carId = navigation.getParam('carId', 'NO-ID');
     getCarsDetails(carId)
+    this.props.navigation.setParams({ shareDetails: this.shareDetails })
+  }
+  shareDetails = () => {
+    console.log(`${this.props.carsDetails.name} - ${this.state.carModel.name}`)
+    console.log(`${this.state.carModel.url}`)
+    Share.open({
+      title: `${this.props.carsDetails.name} - ${this.state.carModel.name}`,
+      url: `${this.state.carModel.url}`,
+      social: Share.Social.WHATSAPP
+    })
+    .then((res) => { console.log(res) })
+    .catch((err) => { err && console.log(err) })
   }
   showActionSheet = () => {
     this.ActionSheet.show()

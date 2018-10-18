@@ -148,7 +148,6 @@ const ApplicationStyles = {
       width: 300
     },
     buttonDanger: {
-      marginTop: 10,
       backgroundColor: '#D0201C',
       borderWidth: 0,
       borderRadius: 0,

@@ -3,8 +3,9 @@ import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
+import { YellowBox } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 import createStore from '../Redux'
-import { YellowBox } from "react-native"
 
 // create our store
 const store = createStore()
@@ -26,6 +27,9 @@ YellowBox.ignoreWarnings([
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
+  componentDidMount () {
+    SplashScreen.hide()
+  }
   render () {
     return (
       <Provider store={store}>

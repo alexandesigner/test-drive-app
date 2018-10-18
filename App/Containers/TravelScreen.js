@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Platform, ScrollView, View, Text, StatusBar } from 'react-native'
+import MapboxGL from '@mapbox/react-native-mapbox-gl'
+import { View, Text, StatusBar } from 'react-native'
 import { Button } from 'react-native-elements'
+import { Colors } from '../Themes'
+
+MapboxGL.setAccessToken('pk.eyJ1IjoiYWxleGFuZGVzaWduZXIiLCJhIjoiY2puZG0zeDBlMGU1eDNrbnkwZDloemw5YyJ9.l7iQ9MjUb0iNAD-hJtO6xA')
 
 // Redux
 import TravelRedux from '../Redux/TravelRedux'
@@ -23,16 +27,53 @@ class TravelScreen extends Component {
   componentWillUnmount() {
     StatusBar.setHidden(true)
   }
+  renderAnnotations() {
+    return (
+      <MapboxGL.PointAnnotation
+        id='testdriveapp'
+        coordinate={[-42.7664154, -5.082132]}
+      >
+        <View style={styles.annotationContainer}>
+          <View style={styles.annotationFill} />
+        </View>
+        <MapboxGL.Callout title='Ponto de partida' />
+      </MapboxGL.PointAnnotation>
+    )
+  }
   render () {
     return (
       <View style={styles.mainContainerTravel}>
-        <View style={{ padding: 10, marginTop: Platform.OS === 'ios' ? 20 : 0 }}>
-          <Text style={{ color: '#fff' }}>Informações da viagem</Text>
+        <View style={styles.travelInfo}>
+          <View style={styles.travelInfoBox}>
+            <Text style={styles.travelBoxLabel}>DISTÂNCIA</Text>
+            <Text style={styles.travelBoxValue}>0.04</Text>
+            <Text style={styles.travelBoxLabel}>km</Text>
+          </View>
+          <View style={styles.travelInfoBox}>
+            <Text style={styles.travelBoxLabel}>VELOCIDADE</Text>
+            <Text style={styles.travelBoxValue}>0.04</Text>
+            <Text style={styles.travelBoxLabel}>km/h</Text>
+          </View>
+          <View style={styles.travelInfoBox}>
+            <Text style={styles.travelBoxLabel}>DISTÂNCIA</Text>
+            <Text style={styles.travelBoxValue}>0.04</Text>
+            <Text style={styles.travelBoxLabel}>km/h</Text>
+          </View>
+          <View style={styles.travelInfoBox}>
+            <Text style={styles.travelBoxLabel}>DURAÇÃO</Text>
+            <Text style={styles.travelBoxValue}>13.15</Text>
+            <Text style={styles.travelBoxLabel}>minutos</Text>
+          </View>
         </View>
-        <ScrollView>
-          <Text style={{ color: '#fff' }}>MAPA</Text>
-        </ScrollView>
-        <View style={{ backgroundColor: '#D0201C' }}>
+        <MapboxGL.MapView
+          centerCoordinate={[-42.7664154, -5.082132]}
+          style={styles.container}
+          showUserLocation
+          styleURL={MapboxGL.StyleURL.Light}
+        >
+        {this.renderAnnotations()}
+        </MapboxGL.MapView>
+        <View style={{ backgroundColor: Colors.danger }}>
           <Button
             buttonStyle={styles.buttonDanger}
             title='FINALIZAR TEST DRIVE'

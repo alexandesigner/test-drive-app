@@ -5,8 +5,10 @@ const CARS_DETAILS_DATA = {
                     id: '123',
                     name: 'Up',
                     image: require('../Images/carro1.png'),
+                    url: 'http://detalhedoveiculo.com.br',
                     models: [{
                       name: '1.0',
+                      url: 'http://detalhedoveiculo.com.br/1.0',
                       featured: [{
                         label: 'Ar-condicionado com filtro de poeira e pólen #1',
                       }, {
@@ -32,6 +34,7 @@ const CARS_DETAILS_DATA = {
                       }]
                     }, {
                       name: 'MSI',
+                      url: 'http://detalhedoveiculo.com.br/msi',
                       featured: [{
                         label: 'Ar-condicionado com filtro de poeira e pólen'
                       }, {

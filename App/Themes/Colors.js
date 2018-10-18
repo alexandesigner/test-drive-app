@@ -23,6 +23,7 @@ const colors = {
   drawer: 'rgba(30, 30, 29, 0.95)',
   eggplant: '#251a34',
   border: '#d1d1d1',
+  danger: '#D0201C',
   banner: '#5F3E63',
   text: '#323232'
 }
