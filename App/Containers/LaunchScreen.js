@@ -17,7 +17,7 @@ class LaunchScreen extends Component {
       <View style={styles.mainContainer}>
         <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 30 }}>
           <Image source={Images.mainLogo} style={{ marginTop: 60, width: 220, height: 220 }} resizeMode="stretch" />
-          <Text style={{ fontSize: 12, color: '#999', marginBottom: 10 }}>versão 1.0.0</Text>
+          <Text style={{ fontSize: 12, color: '#999', marginBottom: 10 }}>v1.0.0</Text>
         </View>
         <View style={styles.container}>
           <View style={styles.section}>
@@ -35,9 +35,6 @@ class LaunchScreen extends Component {
               onPress={() => navigate('RegisterScreen')}
             />
           </View>
-        </View>
-        <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10, marginTop: 30 }}>
-          <Text style={{ fontSize: 12, color: '#999' }}>© 2018</Text>
         </View>
       </View>
     )
