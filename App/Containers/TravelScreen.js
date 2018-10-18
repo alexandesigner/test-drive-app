@@ -5,10 +5,15 @@ import { View, Text, StatusBar } from 'react-native'
 import { Button } from 'react-native-elements'
 import { Colors } from '../Themes'
 
+// Set map token
 MapboxGL.setAccessToken('pk.eyJ1IjoiYWxleGFuZGVzaWduZXIiLCJhIjoiY2puZG0zeDBlMGU1eDNrbnkwZDloemw5YyJ9.l7iQ9MjUb0iNAD-hJtO6xA')
 
 // Redux
+import TestDriveRedux from '../Redux/TestDriveRedux'
 import TravelRedux from '../Redux/TravelRedux'
+
+// Components
+import ModalMileage from '../Components/ModalMileage'
 
 // Styles
 import styles from './Styles/TravelScreenStyles'
@@ -26,6 +31,9 @@ class TravelScreen extends Component {
   }
   componentWillUnmount() {
     StatusBar.setHidden(true)
+  }
+  openModalMileage = (visible) => {
+    this.props.onModalMileage(visible)
   }
   renderAnnotations() {
     return (
@@ -79,21 +87,25 @@ class TravelScreen extends Component {
             title='FINALIZAR TEST DRIVE'
             fontWeight='600'
             color='#fff'
-            onPress={() => console.log('ae')}
+            onPress={() => this.openModalMileage(true)}
           />
         </View>
+        <ModalMileage started={false} navigation={this.props.navigation} />
       </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    modalMileage: state.testDrive.modalMileage
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setTravelStarted: (started) => dispatch(TravelRedux.setTravelStarted(started))
+    setTravelStarted: (started) => dispatch(TravelRedux.setTravelStarted(started)),
+    onModalMileage: (visible) => dispatch(TestDriveRedux.onModalMileage(visible))
   }
 }
 

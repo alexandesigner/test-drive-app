@@ -58,6 +58,7 @@ class ModalTestDriveVersion extends Component {
           <View>
             <Text style={styles.modalTitle}>{currentModel.name}</Text>
             <TouchableHighlight
+              underlayColor='transparent'
               style={styles.modalClose}
               onPress={() => this.onChangeModalCarVersion(false)}>
               <Icon name="x" type="feather" color={Colors.brand} />
@@ -88,10 +89,7 @@ class ModalTestDriveVersion extends Component {
                               checked={item.checked}
                               textStyle={{ fontSize: 18 }}
                               containerStyle={styles.modalCheckbox}
-                              onPress={() => {
-                                console.log('ae')
-                                this.choiceVersion(item.id)
-                              }}
+                              onPress={() => this.choiceVersion(item.id)}
                             />
                             <Text style={{ marginLeft: 50, color: '#999', marginBottom: 10 }}>
                               {item.featured.map(item => item.label).join(', ')}

@@ -29,7 +29,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 78,
+    height: Platform.OS === 'ios' ? 90 : 78,
     padding: Platform.OS === 'ios' ? 10 : 0,
     marginTop: Platform.OS === 'ios' ? 20 : -10
   },

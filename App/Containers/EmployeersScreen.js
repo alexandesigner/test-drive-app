@@ -64,6 +64,7 @@ class EmployeersScreen extends Component {
             <View>
               <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '600' }}>Cadastrar colaborador</Text>
               <TouchableHighlight
+                underlayColor='transparent'
                 style={{ position: 'absolute', right: 20, top: 0 }}
                 onPress={() => this.onChangeModalAddEmployeers(false)}>
                 <Icon name="x" type="feather" color={Colors.brand} />

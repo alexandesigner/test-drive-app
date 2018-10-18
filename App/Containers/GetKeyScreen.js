@@ -32,7 +32,9 @@ class GetKeyScreen extends Component {
   render () {
     return (
       <View style={styles.mainContainerKey}>
-        <TouchableHighlight style={{ paddingTop: 10, paddingBottom: 10, alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}
+        <TouchableHighlight
+          style={{ paddingTop: 10, paddingBottom: 10, alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}
+          underlayColor='transparent'
           onPress={() => this.props.navigation.popToTop()}>
           <View style={{ alignItems: 'center', flexDirection: 'row' }}>
             <Icon name="x" type="feather" color="#fff" />

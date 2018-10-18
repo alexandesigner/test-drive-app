@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, View, TouchableHighlight, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import { Button, Text } from 'react-native-elements'
 import { Colors, Images } from '../Themes'
 

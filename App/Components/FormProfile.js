@@ -144,6 +144,7 @@ class FormProfile extends Component {
             <View>
               <Text style={{ marginLeft: 20, fontSize: 26, color: Colors.text, fontWeight: '600' }}>Alterar senha</Text>
               <TouchableHighlight
+                underlayColor='transparent'
                 style={{ position: 'absolute', right: 20, top: 0 }}
                 onPress={() => this.onChangeModalNewPassword(false)}>
                 <Icon name="x" type="feather" color={Colors.brand} />
