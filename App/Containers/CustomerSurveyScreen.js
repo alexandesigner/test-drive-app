@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, View, Text, TouchableHighlight, StatusBar } from 'react-native'
-import { Icon, List, Button } from 'react-native-elements'
+import { Icon, List, Button, Rating } from 'react-native-elements'
 import { Colors } from '../Themes'
 
 // Styles
@@ -24,13 +24,26 @@ class CustomerSurveyScreen extends Component {
   componentWillUnmount() {
     StatusBar.setHidden(false)
   }
+  ratingCompleted(rating) {
+    console.log("Rating is: " + rating)
+  }
   render () {
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
-            <Text>{'Início' + this.props.mileageStarted}</Text>
-            <Text>{'Final' + this.props.mileageFinished}</Text>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Text>Pergunta</Text>
+              <Rating
+                showRating
+                onFinishRating={this.ratingCompleted}
+                type="star"
+                fractions={1}
+                startingValue={3.6}
+                imageSize={40}
+                style={{ paddingVertical: 10, background: 'transparent' }}
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -39,10 +52,7 @@ class CustomerSurveyScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    mileageStarted: state.testDrive.mileageStarted,
-    mileageFinished: state.testDrive.mileageFinished,
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
