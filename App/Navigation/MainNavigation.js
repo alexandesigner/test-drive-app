@@ -10,6 +10,7 @@ import GetKeyScreen from '../Containers/GetKeyScreen'
 import InitTravelScreen from '../Containers/InitTravelScreen'
 import TravelScreen from '../Containers/TravelScreen'
 import CustomerSurveyScreen from '../Containers/CustomerSurveyScreen'
+import ResumeTravelScreen from '../Containers/ResumeTravelScreen'
 
 // Authentication
 import LoginScreen from '../Containers/LoginScreen'
@@ -30,7 +31,8 @@ const MainNavigation = StackNavigator({
   GetKeyScreen: { screen: GetKeyScreen },
   InitTravelScreen: { screen: InitTravelScreen },
   TravelScreen: { screen: TravelScreen },
-  CustomerSurveyScreen: { screen: CustomerSurveyScreen }
+  CustomerSurveyScreen: { screen: CustomerSurveyScreen },
+  ResumeTravelScreen: { screen: ResumeTravelScreen }
 }, {
   headerMode: 'float',
   navigationOptions: {
