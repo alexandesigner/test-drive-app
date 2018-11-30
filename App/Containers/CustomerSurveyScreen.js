@@ -77,7 +77,7 @@ class CustomerSurveyScreen extends Component {
             buttonStyle={styles.buttonBrand}
             fontWeight='600'
             title='CONFIRMAR'
-            onPress={() => navigate('ResumeTravelScreen')}
+            onPress={() => navigate('DrawerNavigation')}
           />
         </View>
       </View>

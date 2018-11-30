@@ -13,6 +13,7 @@ const ButtonToggle = ({ navigation }) => {
       name="menu"
       color={Colors.brand}
       onPress={() => navigation.navigate('DrawerOpen')}
+      underlayColor='transparent'
     />
   )
 }
@@ -24,6 +25,7 @@ const ButtonEmployeers = ({ navigation, isIcon }) => {
                       name="user-plus"
                       color={Colors.brand}
                       onPress={() => navigation.navigate('EmployeersScreen')}
+                      underlayColor='transparent'
                     />
 }
 

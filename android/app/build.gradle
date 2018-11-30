@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fast-image')
     compile project(':@mapbox/react-native-mapbox-gl')
     compile project(':react-native-splash-screen')
     compile project(':react-native-orientation')

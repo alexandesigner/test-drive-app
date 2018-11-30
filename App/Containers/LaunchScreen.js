@@ -34,12 +34,6 @@ class LaunchScreen extends Component {
               color={Colors.text}
               onPress={() => navigate('RegisterScreen')}
             />
-            <Button
-              buttonStyle={styles.buttonBrand}
-              title='PESQUISA'
-              fontWeight='600'
-              onPress={() => navigate('CustomerSurveyScreen')}
-            />
           </View>
         </View>
       </View>

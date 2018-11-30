@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TestDriveAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TestDriveAppTests.m */; };
 		0D8E20ACE8014F0B819364A3 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C85555D5186649CDBF2E302D /* libRCTOrientation.a */; };
